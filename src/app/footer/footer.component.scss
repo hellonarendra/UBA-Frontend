@@ -1,0 +1,35 @@
+@import "../../styles.scss";
+
+
+footer {
+  background-color: $background-theme;
+}
+
+.h2 {
+  border-bottom: 2px solid black;
+}
+
+.f-a-color {
+  color: rgb(255, 255, 255);
+  font-weight: 700;
+}
+
+.f-a-color:hover {
+  color: rgb(233, 232, 232);
+}
+
+.f-color {
+  color: rgb(255, 255, 255);
+  font-size: 1.2rem;
+}
+
+.nav-link {
+  padding: 0px;
+}
+
+.copyright-div {
+  border-top: 2px solid black;
+  font-size: 1.2rem;
+  //   margin-bottom: -10px;
+  //   padding-bottom: -10px;
+}

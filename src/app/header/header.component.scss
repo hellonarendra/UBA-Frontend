@@ -1,0 +1,43 @@
+@import "../../styles.scss";
+
+.row {
+  margin: 0px;
+}
+
+// **************** logo ***************
+.uba-heading {
+  font-weight: 700;
+  font-size: 3rem;
+}
+
+.juit-heading {
+  font-weight: 600;
+  font-size: 2rem;
+}
+
+
+// ****************  Nav-Bar *****************
+.nav-item,
+.home {
+  color: red;
+  font-weight: 700;
+}
+
+.nav-link {
+  padding: 10px 12px 10px 12px;
+  margin: 0px 10px 0px 10px;
+}
+
+.nav-color {
+  color: white;
+}
+
+.nav-color:hover {
+  color: black;
+  background-color: $background-theme;
+}
+
+nav {
+  padding: 0px;
+  background-color: black;
+}
