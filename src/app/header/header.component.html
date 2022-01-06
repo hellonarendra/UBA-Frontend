@@ -15,7 +15,7 @@
   <nav class="navbar  navbar-expand-lg ">
     <!-- <a class="nav-link nav-color" href="#">HOME</a> -->
     <a class="nav-link home nav-color" href="#"><i class="fas fa-home"></i> HOME</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+    <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -40,8 +40,16 @@
         <li class="nav-item visit">
           <a class="nav-link nav-color" href="#"><i class="far fa-handshake"></i> VISIT</a>
         </li>
-        <li class="nav-item contact">
+        <li class="nav-item contact mr-auto">
           <a class="nav-link nav-color " href="#"><i class="fas fa-address-book"></i> CONTACT</a>
+        </li>
+        <li class="nav-item  login ml-auto ">
+          <a class="nav-link nav-color " href="#" routerLinkActive="sam-primary" [routerLink]="['login']"><i
+              class="fas fa-address-book"></i> LOGIN</a>
+        </li>
+        <li class="nav-item signup">
+          <a class="nav-link nav-color " href="#" routerLinkActive="sam-primary" [routerLink]="['signup']"><i
+              class="fas fa-address-book"></i> SIGNUP</a>
         </li>
       </ul>
     </div>

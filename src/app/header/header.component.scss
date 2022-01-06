@@ -15,11 +15,38 @@
   font-size: 2rem;
 }
 
+@media screen and (max-width: 600px) {
+  img {
+    display: none;
+  }
+
+  .uba-heading {
+    font-weight: 600;
+    font-size: 1.5rem;
+  }
+
+  .juit-heading {
+    font-weight: 500;
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width:770px) {
+  .uba-heading {
+    padding-top: 10px;
+    font-weight: 700;
+    font-size: 1.7rem;
+  }
+
+  .juit-heading {
+    font-weight: 500;
+    font-size: 1.2rem;
+  }
+}
 
 // ****************  Nav-Bar *****************
 .nav-item,
 .home {
-  color: red;
   font-weight: 700;
 }
 
@@ -40,4 +67,12 @@
 nav {
   padding: 0px;
   background-color: black;
+}
+
+button {
+  color: white;
+}
+
+.login {
+  margin-left: 100px;
 }
