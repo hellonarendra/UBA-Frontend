@@ -1,0 +1,26 @@
+@import "../../styles.scss";
+
+.theme-color {
+  color: $background-theme;
+}
+
+.p,
+li {
+  font-size: large;
+  text-align: justify;
+}
+
+.img {
+  width: 100%;
+  height: 450px;
+}
+
+a {
+  text-decoration: none;
+  color: $background-theme;
+}
+
+a:hover {
+  //   color: $background-theme;
+  text-decoration: underline;
+}

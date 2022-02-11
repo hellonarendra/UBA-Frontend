@@ -1,0 +1,39 @@
+<!-- <div *ngFor="let item of gallaryImage; index as i;">
+  <img src={{item.image}} alt="" >
+</div> -->
+
+<!-- <div class="col-lg-3 col-md-6" *ngFor="let image of images">
+  <img [src]='image' class="m-1 img" />
+</div> -->
+<!--
+<div class="card" style="width: 40rem;">
+  <img src="../../assets/IMG_7437.JPG" class="card-img-top shadow" alt="...">
+</div> -->
+<div class="row justify-content-around  ml-0 mr-0 mt-3">
+  <!-- <div class="row justify-content-around align-items-center ml-0 mr-0 mt-3"> -->
+  <div class="col-lg-3 col-md-6 col-sm-12  p-0 my-3 mx-1 div-2 " *ngFor="let item of images">
+    <img src="{{ item}}" alt="" class="img border shadow" />
+  </div>
+</div>
+
+<!-- <div class="mt-3 mb-3">
+  <div class="row p-0 m-0">
+    <div class="col-md-4 col-sm-4 flex">
+      <img src='../../assets/IMG_7437.JPG' class="m-1 img img-thumbnail" />
+      <img src='../../assets/juit1.jpg' class="m-1 img img-thumbnail" />
+      <img src='../../assets/juit1.jpg' class="m-1 img img-thumbnail" />
+    </div>
+    <div class="col-md-4 col col-sm-4">
+      <img src='../../assets/IMG_7437.JPG' class="m-1 img img-thumbnail" />
+      <img src='../../assets/juit1.jpg' class="m-1 img img-thumbnail" />
+      <img src='../../assets/IMG_7437.JPG' class="m-1 img img-thumbnail" />
+      <img src='../../assets/juit1.jpg' class="m-1 img img-thumbnail" />
+    </div>
+    <div class="col-md-4 col col-sm-4">
+      <img src='../../assets/IMG_7437.JPG' class="m-1 img img-thumbnail" />
+      <img src='../../assets/juit1.jpg' class="m-1 img img-thumbnail" />
+      <img src='../../assets/IMG_7437.JPG' class="m-1 img img-thumbnail" />
+      <img src='../../assets/juit1.jpg' class="m-1 img img-thumbnail" />
+    </div>
+  </div>
+</div> -->
