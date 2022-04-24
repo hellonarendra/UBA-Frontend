@@ -1,0 +1,169 @@
+<div class="container">
+  <h3 class="bg-dark text-white p-3 mt-5 text-center">Members List</h3>
+  <!-- <tr>
+    <td>
+      <button class="border  btn btn-default ml-2 mb-3 mt-3 mr-2" type="button" data-toggle="modal"
+        data-target="#add"><b>Add</b></button>
+    </td>
+  </tr> -->
+  <table datatable [dtOptions]="dtOptions" class="table table-bordered text-center table-hover mt-5 ">
+    <thead class="table-secondary">
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Branch</th>
+        <th>Enrollment</th>
+        <th>Mobile No.</th>
+        <th>Action</th>
+        <!-- <th>Action2</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <!-- <tr *ngFor="let data of jsonData"> -->
+      <tr *ngFor="let data of getData">
+        <td>{{data.name}}</td>
+        <td>{{data.email}}</td>
+        <td>{{data.branch}}</td>
+        <td>{{data.enrollmentNo}}</td>
+        <td>{{data.mobileNo}}</td>
+        <td> <i class="fas fa-edit " data-toggle="modal" data-target="#edit"
+            style="color:grey;font-size: 17px; margin-right: 5px; cursor: pointer;"
+            (click)="editId(data._id,data.name,data.email,data.mobileNo,data.enrollmentNo,data.branch)">edit</i>
+          <i class="fas fa-trash " data-toggle="modal" data-target="#delete"
+            style="color:red; font-size: 17px;cursor: pointer;" (click)="deleteId(data._id)"></i>
+        </td>
+        <!-- (click)="deleteId(data._id)" -->
+        <!-- <td><i class="fas fa-trash " data-toggle="modal" data-target="#delete" style="color:red; font-size: 20px; "></i>
+        </td> -->
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- <div class="container">
+  <div class="col-md-12 col-sm-12 pt-5 " style="overflow-x:auto;">
+    <tr>
+      <td>
+        <button class="border  btn btn-default ml-2 mb-3 mt-3 mr-2" type="button" data-toggle="modal"
+          data-target="#add"><b>Add</b></button>
+      </td>
+    </tr>
+    <table datatable [dtOptions]="dtOptions" class="table table-bordered text-center table-hover mt-5  ">
+      <thead class="table-secondary">
+        <tr>
+          <th>Name</th>
+          <th>Collage</th>
+          <th>Branch</th>
+          <th>Roll No.</th>
+          <th>Phone</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr *ngFor="let data of jsonData">
+          <tr>
+          <td><img src="{{data.imagePath}}" class=" profile-icon" /></td>
+          <td><img src="data.imagePath" class=" profile-icon" /></td>
+          <td>{{data.name}}</td>
+          <td class="font">{{data.collage}}</td>
+          <td class="font">{{data.branch}}</td>
+          <td class="font">{{data.roll}}</td>
+          <td class="font">{{data.phone}}</td>
+          (click)="editId(data._id,data.name,data.code,data.margin)"
+          <td> <i class="fas fa-edit " data-toggle="modal" data-target="#edit"
+              style="color:blue;font-size: 20px; margin-right: 5px; cursor: pointer;">edit</i></td>
+          (click)="deleteId(data._id)"
+          <td><i class="fas fa-trash " data-toggle="modal" data-target="#delete"
+              style="color:red; font-size: 20px; margin-right: 5px; cursor: pointer; "></i></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div> -->
+
+<!-- ///////////////////////    Modal edit start //////////////////////// -->
+
+<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+        <button class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <!-- [formGroup]="myForm" (ngSubmit)="edit()" -->
+        <form [formGroup]="editForm" ngNativeValidate enctype="multipart/form-data" (ngSubmit)="edit()">
+          <div class="row">
+            <div class="form-group col-6">
+              <label for="exampleInputName">Name</label><br>
+              <input type="text" value="{{eName}}" formControlName="name" maxlength="20" required>
+            </div>
+            <div class="form-group col-6">
+              <label for="example">Email</label><br>
+              <input type="text" value="{{eEmail}}" formControlName="email" required>
+            </div>
+
+            <div class="form-group col-6">
+              <label for="example">Enrollment </label><br>
+              <input type="text" value="{{eEnrollment}}" formControlName="enrollmentNo" required>
+            </div>
+            <div class="form-group col-6">
+              <label for="example">Branch </label><br>
+              <input type="text" value="{{eBranch}}" formControlName="branch" required>
+            </div>
+
+            <div class="form-group col-6">
+              <label for="example">Mobile </label><br>
+              <input type="text" value="{{eMobile}}" formControlName="mobileNo" maxlength="10" required>
+            </div>
+
+            <div class="form-group col-6">
+              <label for="example">Photo</label><br>
+              <!-- <input type="file" id="table-img" formControlName="uploader" (change)="onFileChange($event)" required> -->
+              <input type="file" (change)="onFileChange($event)" id="table-img" formControlName="uploader" required>
+              <!-- <span *ngFor="let item of images;"> -->
+              <!-- <span>
+              <img id="blah" src="item.src" alt="your image" style="width: 100px; height: 100px;" />
+            </span> -->
+              <!-- <label class="imageLabelStandrad mt-5 text-danger">Upload Image Width 40px and Height 40px
+            </label> -->
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" data-dismiss="modal">cancel</button>
+            <button class="btn btn-primary" type="submit">Update</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- </div> -->
+
+  <!-- //////////////////////////////  Modal edit end here ////////////////////////////// -->
+
+
+  <!-- //////////////////////////////  Modal delete start here ////////////////////////////// -->
+
+
+  <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+
+          <p>Are you sure you want to delete</p>
+          <!-- (click)="delete()" -->
+          <button class="btn btn-primary" type="button" data-dismiss="modal" (click)="delete()">Yes</button>
+          <button class="btn btn-default ml-2" data-dismiss="modal">cancel</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- //////////////////////////////  Modal delete end here ////////////////////////////// -->

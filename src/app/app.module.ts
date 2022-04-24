@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { DataTablesModule } from "angular-datatables";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +19,12 @@ import { SignupComponent } from './signup/signup.component';
 import { AboutComponent } from './about/about.component';
 import { GallaryComponent } from './gallary/gallary.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { AdminUbaMemberComponent } from './admin-uba-member/admin-uba-member.component';
+import { VillageProblemComponent } from './village-problem/village-problem.component';
+import { EventsComponent } from './events/events.component';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { ConfirmPasswordComponent } from './confirm-password/confirm-password.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +37,12 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
     AboutComponent,
     GallaryComponent,
     ContactUsComponent,
+    AdminDashboardComponent,
+    AdminUbaMemberComponent,
+    VillageProblemComponent,
+    EventsComponent,
+    ForgetPasswordComponent,
+    ConfirmPasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +53,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     NgImageSliderModule,
+    DataTablesModule,
     MDBBootstrapModule.forRoot(),
     RouterModule.forRoot([
       { path: 'home', component: HomeComponent },
@@ -51,6 +65,12 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
       { path: 'about', component: AboutComponent },
       { path: 'gallary', component: GallaryComponent },
       { path: 'conatct-us', component: ContactUsComponent },
+      { path: 'dash', component: AdminDashboardComponent },
+      { path: 'uba-member', component: AdminUbaMemberComponent },
+      { path: 'village-problem', component: VillageProblemComponent },
+      { path: 'events', component: EventsComponent },
+      { path: 'forgetPassword', component: ForgetPasswordComponent },
+      { path: 'confirmPassword', component: ConfirmPasswordComponent },
     ])
   ],
   providers: [],

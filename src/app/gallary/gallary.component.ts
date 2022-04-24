@@ -6,11 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./gallary.component.scss']
 })
 export class GallaryComponent implements OnInit {
-
+  viewImg = false;
+  mainImg = true;
   constructor() { }
 
   ngOnInit(): void {
   }
+
   images = ["../../assets/IMG_7437.JPG",
     "../../assets/IMG_7437.JPG",
     "../../assets/juit.jpg",
@@ -36,5 +38,10 @@ export class GallaryComponent implements OnInit {
   //     image: '../../assets/juit1.jpg',
   //   },
   // ]
-
+  showImg(i) {
+    console.log(i);
+    console.log("this is image");
+    this.viewImg = true;
+    this.mainImg = false;
+  }
 }

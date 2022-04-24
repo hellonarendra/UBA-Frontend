@@ -1,0 +1,56 @@
+<div class="d-flex" id="wrapper">
+  <!-- Sidebar -->
+  <div class="bg-secondary text-dark " id="sidebar-wrapper">
+    <div class="sidebar-heading border-bottom">Admin </div>
+    <div class="list-group list-group-flush">
+      <a class="list-group-item list-group-item-action bg-secondary text-dark" (click)="ubaMember()">UBA Members</a>
+      <a class="list-group-item list-group-item-action bg-secondary text-dark" (click)="villageProblem()">Village
+        Problem</a>
+      <!-- <a class="list-group-item list-group-item-action bg-secondary text-dark" (click)="ubaMember()">Members
+        Problem</a> -->
+      <a class="list-group-item list-group-item-action bg-secondary text-dark" (click)="event()">Events
+      </a>
+      <a class="list-group-item list-group-item-action bg-secondary text-dark" (click)="photos()">Gallary</a>
+    </div>`
+  </div>
+  <!-- /#sidebar-wrapper -->
+  <!-- Page Content -->
+
+  <div id="page-content-wrapper" class="pos-f-t">
+    <nav class="navbar  navbar-dark bg-secondary ">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidebar-wrapper"
+        aria-controls="sidebar-wrapper" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-dark " href="#" id="navbarDropdown" role="button"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Logout
+            </a>
+          </li>
+        </ul>
+      </div> -->
+    </nav>
+    <div class="container-fluid">
+      <ng-container *ngIf="uba_member">
+        <app-admin-uba-member> </app-admin-uba-member>
+      </ng-container>
+      <ng-container *ngIf="village_problem">
+        <app-village-problem></app-village-problem>
+      </ng-container>
+      <ng-container *ngIf="events">
+        <app-events> </app-events>
+      </ng-container>
+      <ng-container *ngIf="gallary">
+        <!-- <app-prescription-list></app-prescription-list> -->
+        <h3>Gallary</h3>
+      </ng-container>
+      <h1 class="mt-4">Simple Sidebar</h1>
+      <p>The content Goes Here</p>
+    </div>
+  </div>
+  <!-- /#page-content-wrapper -->
+</div>
+<!-- /#wrapper -->

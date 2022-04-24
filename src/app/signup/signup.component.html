@@ -1,6 +1,8 @@
 <div class="container col-md-6 col-sm-6 col-xs-12 mb-5 " style="margin-top: 5rem ;">
 
-  <form class="form-group  px-3 pb-3 pt-3 rounded border" ngNativeValidate>
+  <form class="form-group form  px-3 pb-3 pt-3 rounded border" [formGroup]="formGroup" (ngSubmit)="registerProcess()"
+    ngNativeValidate>
+
     <h2 class="text-center pb-3  mx-auto ">Sign Up Now</h2>
     <div class="row">
       <ng-container *ngIf="true">
@@ -18,7 +20,7 @@
         <div class="col-md-6">
           <label for="mobile" class="label-text form-label mb-0 mt-2 ">Mobile No.</label>
           <input type="number" class="form-control form-control-sm rounded" pattern="/^-?\d+\.?\d*$/"
-            formControlName="phone" placeholder="Mobile No." required>
+            formControlName="mobileNo" placeholder="Mobile No." required>
         </div>
 
         <div class="col-md-6">
@@ -31,40 +33,40 @@
         </div>
         <div class="col-md-6">
           <label class="label-text form-label mb-0 mt-2 ">Role</label>
-          <select class="form-control form-control-sm" name="role" (change)="selectRole($event)" required>
+          <select class="form-control form-control-sm" formControlName="role" name="role" (change)="selectRole($event)"
+            required>
             <option value="role">Select User Role</option>
-            <option value="student">Student</option>
-            <option value="member">Member</option>
+            <option value="ubaMember">Uba Members</option>
+            <option value="guest">Guest</option>
           </select>
         </div>
       </ng-container>
 
+      <ng-container *ngIf="ubaMembers">
+        <div class="col-md-6">
+          <label for="collage" class="label-text form-label mb-0 mt-2  ">Branch</label>
+          <input type="text" class="form-control form-control-sm rounded " formControlName="branch"
+            placeholder="Collage Name">
+        </div>
+        <div class="col-md-6">
+          <label for="collage" class="label-text form-label mb-0 mt-2  ">Enrollment No.</label>
+          <input type="text" class="form-control form-control-sm rounded " formControlName="enrollmentNo"
+            placeholder="Enrollment No.">
+        </div>
+        <div class="col-md-6">
+          <label for="collage" class="label-text form-label mb-0 mt-2  ">Upload Profile Photo</label>
+          <input type="file" class="form-control form-control-sm rounded " formControlName="uploader"
+            placeholder="Uplaod Image" enctype="multipart/form-data" (change)="onFileChange($event)" #fileInput>
 
-      <ng-container *ngIf="studentForm">
-        <div class="col-md-6">
-          <label for="collage" class="label-text form-label mb-0 mt-2  ">Collage Name</label>
-          <input type="text" class="form-control form-control-sm rounded " formControlName="collage"
-            placeholder="Collage Name" required>
         </div>
-        <div class="col-md-6">
-          <label for="collage" class="label-text form-label mb-0 mt-2  ">Collage Name</label>
-          <input type="text" class="form-control form-control-sm rounded " formControlName="collage"
-            placeholder="Collage Name" required>
-        </div>
-        <div class="col-md-6">
-          <label for="collage" class="label-text form-label mb-0 mt-2  ">Collage Name</label>
-          <input type="text" class="form-control form-control-sm rounded " formControlName="collage"
-            placeholder="Collage Name" required>
-        </div>
+
       </ng-container>
-
 
       <div class="col-md-12 pt-3">
         <button class="btn btn-primary btn-signUp form-control form-control-sm mt-2" type="submit">
           Sign Up
         </button>
       </div>
-
       <div class=" text-center mx-auto mt-2">
         <p class="label-text  pl-3 ">
           Already a member?

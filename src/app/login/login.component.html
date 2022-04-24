@@ -1,11 +1,13 @@
 <div class="container col-md-6 col-sm-6 col-xs-12 mb-5 " style="margin-top: 5rem ;">
 
-  <form class="form-group px-3 pb-3 pt-3 rounded border " (ngSubmit)="loginProcess()" ngNativeValidate>
+  <form class="form-group px-3 pb-3 pt-3 rounded border " [formGroup]="formGroup" (ngSubmit)="loginProcess()"
+    ngNativeValidate>
     <h2 class="text-center pb-4 ml-auto mr-auto ">Member Login</h2>
     <div class="col-md-12">
       <label for="username" class="label-text form-label mb-0 mt-2">
         Username *</label>
-      <input type="email" class="form-control rounded my-2" placeholder="Username/Email" id="email" />
+      <input type="email" class="form-control rounded my-2" placeholder="Username/Email" formControlName="email" id="
+        email" />
     </div>
 
     <div class="col-md-12">
@@ -14,14 +16,14 @@
         id="password" />
     </div>
     <div class="row">
-      <div class="col-md-6 col-xs-6  mt-2">
+      <!-- <div class="col-md-6 col-xs-6  mt-2">
         <input class="ml-3" formControlName="rememberMe" type="checkbox" id="rememberMe">
         <label class="label-text form-check-label pl-2" for="rememberMe">
           Remember Me
         </label>
-      </div>
+      </div> -->
       <div class="col-md-6 col-xs-6  mt-2">
-        <a class="forget-password  float-right mr-3" [routerLink]="['/forgotPassword']">Forget Password ?</a>
+        <a class="forget-password  float-right mr-3" [routerLink]="['/forgetPassword']">Forget Password ?</a>
       </div>
     </div>
 

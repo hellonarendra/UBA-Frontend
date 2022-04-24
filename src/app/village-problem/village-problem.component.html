@@ -1,0 +1,73 @@
+<div class="container m-5">
+  <h3 class="bg-dark text-white p-3 mt-5 text-center">Village Problem</h3>
+  <form class="form-group rounded shadow p-3" [formGroup]="formGroup" (ngSubmit)="sendProblem()" ngNativeValidate>
+    <div class="row">
+      <div class="col-md-6">
+        <label for="villageName" class="label-text form-label mb-0 mt-2">
+          Village Name </label>
+        <input type="text" class="form-control rounded my-2" placeholder="Village Name" formControlName="villageName"
+          id=" villageName" />
+      </div>
+      <!-- <div class="col-md-6">
+        <label for="date" class="label-text form-label mb-0 mt-2">
+          Date</label>
+        <input type="date" class="form-control rounded my-2" placeholder="date" formControlName="date" id=" date" />
+      </div> -->
+      <div class="col-md-12">
+        <label for="textArea" class="label-text form-label">Problem Statement</label>
+        <textarea class="form-control form-control-sm rounded" rows="5" cols="50" placeholder="Enter Your Message"
+          formControlName="villageProblem" required></textarea>
+      </div>
+    </div>
+    <div class="pl-auto">
+      <button class="btn btn-primary btn-sm mt-3  " type=" submit">
+        Submit
+      </button>
+    </div>
+  </form>
+
+  <!-- ====================== Probem list ======================-->
+  <div>
+    <h3 class="bg-dark text-white p-3 mt-5 text-center">Problem List</h3>
+
+    <table datatable [dtOptions]="dtOptions" class="table table-bordered text-center table-hover mt-5 ">
+      <thead class="table-secondary">
+        <tr>
+          <th>Name</th>
+          <th>Collage</th>
+          <th>Action</th>
+          <!-- <th>Action2</th> -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of jsonData">
+          <!-- <tr *ngFor="let data of getData"> -->
+          <td>{{data.name}}</td>
+          <td>{{data.collage}}</td>
+          <td>
+            <i class="fa fa-check-square" aria-hidden="true" data-toggle="modal" data-target="#delete"
+              style="color:rgb(66, 186, 150); font-size: 17px;cursor: pointer;"> Done</i>
+          </td>
+          <!-- (click)="deleteId(data._id)" -->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<!--========================= Done model ======================-->
+
+<!-- <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+
+        <p>Are you sure you want to delete</p>
+        (click)="delete()"
+<button class="btn btn-primary" type="button" data-dismiss="modal" (click)="delete()">Yes</button>
+<button class="btn btn-default ml-2" data-dismiss="modal">cancel</button>
+</div>
+</div>
+</div>
+</div> -->
