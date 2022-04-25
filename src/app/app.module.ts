@@ -25,6 +25,9 @@ import { VillageProblemComponent } from './village-problem/village-problem.compo
 import { EventsComponent } from './events/events.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { ConfirmPasswordComponent } from './confirm-password/confirm-password.component';
+import { MembersComponent } from './members/members.component';
+import { AdminGallaryComponent } from './admin-gallary/admin-gallary.component';
+import { SendSolutionComponent } from './send-solution/send-solution.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +46,9 @@ import { ConfirmPasswordComponent } from './confirm-password/confirm-password.co
     EventsComponent,
     ForgetPasswordComponent,
     ConfirmPasswordComponent,
+    MembersComponent,
+    AdminGallaryComponent,
+    SendSolutionComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,6 +77,9 @@ import { ConfirmPasswordComponent } from './confirm-password/confirm-password.co
       { path: 'events', component: EventsComponent },
       { path: 'forgetPassword', component: ForgetPasswordComponent },
       { path: 'confirmPassword', component: ConfirmPasswordComponent },
+      { path: 'members', component: MembersComponent },
+      { path: 'admin-gallary', component: AdminGallaryComponent },
+      { path: 'send-solution', component: SendSolutionComponent },
     ])
   ],
   providers: [],

@@ -1,17 +1,17 @@
-<div class="row justify-content-around  ml-0 mr-0 mt-3">
-  <!-- <div class="row justify-content-around align-items-center ml-0 mr-0 mt-3"> -->
+<!-- <div class="row justify-content-around  ml-0 mr-0 mt-3">
+  <div class="row justify-content-around align-items-center ml-0 mr-0 mt-3">
   <div class="col-lg-3 col-md-6 col-sm-12  p-0 my-3 mx-1 div-2 " *ngFor="let item of images">
     <img src="{{ item}}" alt="" class="img border shadow" />
   </div>
-</div>
+</div> -->
 
-<ng-container *ngIf="mainImg">
+<ng-container *ngIf="mainImg " class="m-0">
   <div class="shadow rounded mb-3 ">
-    <div class="row justify-content-start pl-5 mb-3">
+    <div class="row justify-content-start ">
       <!-- <span class="">Faculty Co-ordinator</span> <br> -->
       <div class="col " *ngFor="let item of images; let i = index">
         <!-- <div class="col "> -->
-        <div class="card" style="width: 18rem;">
+        <div class="card p-2 m-3" style="width: 20rem;">
           <a (click)="showImg(i)"> <img src={{item}} class="card-img-top" alt="...">
           </a>
           <!-- ng-click="showImg()" -->
@@ -29,7 +29,7 @@
 </ng-container>
 
 <ng-container *ngIf="viewImg">
-  <div class="row justify-content-start pl-5 mb-3">
+  <div class="row justify-content-start">
     <div class="col " *ngFor="let item of images; let i = index">
       <div class="card " style="width: 18rem;">
         <img src={{item}} class="card-img-top" alt="...">

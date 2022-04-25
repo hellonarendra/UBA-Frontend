@@ -40,48 +40,6 @@
   </table>
 </div>
 
-<!-- <div class="container">
-  <div class="col-md-12 col-sm-12 pt-5 " style="overflow-x:auto;">
-    <tr>
-      <td>
-        <button class="border  btn btn-default ml-2 mb-3 mt-3 mr-2" type="button" data-toggle="modal"
-          data-target="#add"><b>Add</b></button>
-      </td>
-    </tr>
-    <table datatable [dtOptions]="dtOptions" class="table table-bordered text-center table-hover mt-5  ">
-      <thead class="table-secondary">
-        <tr>
-          <th>Name</th>
-          <th>Collage</th>
-          <th>Branch</th>
-          <th>Roll No.</th>
-          <th>Phone</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-
-        <tr *ngFor="let data of jsonData">
-          <tr>
-          <td><img src="{{data.imagePath}}" class=" profile-icon" /></td>
-          <td><img src="data.imagePath" class=" profile-icon" /></td>
-          <td>{{data.name}}</td>
-          <td class="font">{{data.collage}}</td>
-          <td class="font">{{data.branch}}</td>
-          <td class="font">{{data.roll}}</td>
-          <td class="font">{{data.phone}}</td>
-          (click)="editId(data._id,data.name,data.code,data.margin)"
-          <td> <i class="fas fa-edit " data-toggle="modal" data-target="#edit"
-              style="color:blue;font-size: 20px; margin-right: 5px; cursor: pointer;">edit</i></td>
-          (click)="deleteId(data._id)"
-          <td><i class="fas fa-trash " data-toggle="modal" data-target="#delete"
-              style="color:red; font-size: 20px; margin-right: 5px; cursor: pointer; "></i></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div> -->
-
 <!-- ///////////////////////    Modal edit start //////////////////////// -->
 
 <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -102,15 +60,15 @@
               <label for="exampleInputName">Name</label><br>
               <input type="text" value="{{eName}}" formControlName="name" maxlength="20" required>
             </div>
-            <div class="form-group col-6">
+            <!-- <div class="form-group col-6">
               <label for="example">Email</label><br>
               <input type="text" value="{{eEmail}}" formControlName="email" required>
-            </div>
+            </div> -->
 
-            <div class="form-group col-6">
+            <!-- <div class="form-group col-6">
               <label for="example">Enrollment </label><br>
               <input type="text" value="{{eEnrollment}}" formControlName="enrollmentNo" required>
-            </div>
+            </div> -->
             <div class="form-group col-6">
               <label for="example">Branch </label><br>
               <input type="text" value="{{eBranch}}" formControlName="branch" required>
@@ -124,7 +82,8 @@
             <div class="form-group col-6">
               <label for="example">Photo</label><br>
               <!-- <input type="file" id="table-img" formControlName="uploader" (change)="onFileChange($event)" required> -->
-              <input type="file" (change)="onFileChange($event)" id="table-img" formControlName="uploader" required>
+              <input type="file" (change)="onFileChange($event)" id="table-img" enctype="multipart/form-data"
+                formControlName="uploader" required #fileInput>
               <!-- <span *ngFor="let item of images;"> -->
               <!-- <span>
               <img id="blah" src="item.src" alt="your image" style="width: 100px; height: 100px;" />

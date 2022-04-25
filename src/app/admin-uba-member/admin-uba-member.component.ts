@@ -23,6 +23,8 @@ export class AdminUbaMemberComponent implements OnInit {
   fileName = [];
   uploadedFiles = [];
   images = [];
+  selectedFile: File;
+  editForm;
   // jsonData = [{
   //   name: 'bvhgh',
   //   collage: 'narendra@yopmail.com',
@@ -48,19 +50,28 @@ export class AdminUbaMemberComponent implements OnInit {
 
   // dtOptions: DataTables.Settings = {};
   // dataTable: any;
-  editForm = new FormGroup({
-    name: new FormControl("", [Validators.required]),
-    email: new FormControl("", [Validators.required]),
-    enrollmentNo: new FormControl("", [Validators.required]),
-    branch: new FormControl("", [Validators.required]),
-    mobileNo: new FormControl("", [Validators.required]),
-    uploader: new FormControl("", [Validators.required]),
-  });
+  // editForm = new FormGroup({
+  //   name: new FormControl("", [Validators.required]),
+  //   email: new FormControl("", [Validators.required]),
+  //   enrollmentNo: new FormControl("", [Validators.required]),
+  //   branch: new FormControl("", [Validators.required]),
+  //   mobileNo: new FormControl("", [Validators.required]),
+  //   uploader: new FormControl("", [Validators.required]),
+  // });
   constructor(private modalService: NgbModal, config: NgbModalConfig,
     private cd: ChangeDetectorRef) { }
   dtOptions: any = {};
 
   ngOnInit(): void {
+    this.editForm = new FormGroup({
+      name: new FormControl("", [Validators.required]),
+      email: new FormControl("", [Validators.required]),
+      enrollmentNo: new FormControl("", [Validators.required]),
+      branch: new FormControl("", [Validators.required]),
+      mobileNo: new FormControl("", [Validators.required]),
+      uploader: new FormControl("", [Validators.required]),
+    });
+
     axios.get(serverUrl + 'user/getUbaMembers').then((response) => {
       this.getData = response.data.data;
       console.log(this.getData);
@@ -75,14 +86,6 @@ export class AdminUbaMemberComponent implements OnInit {
       processing: true,
       lengthMenu: [5, 10, 25],
       dom: 'Bfrtip',
-      // buttons: [
-      //   'copy', 'csv', 'excel', 'print', 'pdf',
-      //   //  {
-      //   //     extend: 'pdfHtml5',
-      //   //     messageTop: 'PDF created by PDFMake with Buttons for DataTables.'
-      //   // }
-      //   // 'copyHtml5','excelHtml5','csvHtml5','pdfHtml5'
-      // ]
     };
   }
   deleteId(deleteId) {
@@ -97,10 +100,22 @@ export class AdminUbaMemberComponent implements OnInit {
     this.eBranch = branch;
   }
   edit() {
-    // let editFormData = new FormData();
-    axios.post(serverUrl + 'user/update', this.editForm.value + this.eId).then((response) => {
+    let editFormData = new FormData();
+    editFormData.append('uploader', this.selectedFile, this.selectedFile.name);
+    editFormData.append('name', this.editForm.get('name').value)
+    editFormData.append('branch', this.editForm.get('branch').value)
+    editFormData.append('mobileNo', this.editForm.get('mobileNo').value)
+    editFormData.append('enrollmentNo', this.editForm.get('enrollmentNo').value)
+    editFormData.append('email', this.editForm.get('email').value)
+
+    // axios.post(serverUrl + 'user/update', this.editForm.value + this.eId).then((response) => {
+    axios.post(serverUrl + 'user/update', editFormData, this.eId).then((response) => {
       console.log("This is Update API");
+      console.log(editFormData + this.eId);
+
+      console.log(this.eId);
       console.log(response);
+
 
     }).catch((error) => {
       console.log(error);
@@ -119,30 +134,8 @@ export class AdminUbaMemberComponent implements OnInit {
       console.log(error)
     })
 
-
   }
   onFileChange(event) {
-
-    if (event.target.files && event.target.files[0]) {
-
-      var filesAmount = event.target.files;
-      this.fileName = event.target.files
-      for (let i = 0; i < filesAmount.length; i++) {
-        // this.uploadedFiles.push(filesAmount);
-        var reader = new FileReader();
-        let type = filesAmount[i].type.split('/')
-        reader.onload = (event: any) => {
-          let obj = {
-            'id': i,
-            'src': event.target.result,
-            'type': type[0]
-          }
-          // this.images.push(obj);
-          this.cd.detectChanges();
-        }
-        reader.readAsDataURL(event.target.files[i]);
-        this.cd.markForCheck();
-      }
-    }
+    this.selectedFile = event.target.files[0];
   }
 }

@@ -14,6 +14,7 @@ const serverUrl = environment.baseUrl;
 })
 export class VillageProblemComponent implements OnInit {
   formGroup: FormGroup;
+  getData;
   jsonData = [{
     name: 'bvhgh',
     collage: 'narendra@yopmail.com',
@@ -36,20 +37,18 @@ export class VillageProblemComponent implements OnInit {
       villageProblem: new FormControl('', [Validators.required])
     })
 
+    axios.get(serverUrl + 'chat/getComments').then((response) => {
+      this.getData = response.data.data;
+      console.log(this.getData);
+
+    })
+
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 10,
       processing: true,
       lengthMenu: [5, 10, 25],
       dom: 'Bfrtip',
-      // buttons: [
-      //   'copy', 'csv', 'excel', 'print', 'pdf',
-      //   //  {
-      //   //     extend: 'pdfHtml5',
-      //   //     messageTop: 'PDF created by PDFMake with Buttons for DataTables.'
-      //   // }
-      //   // 'copyHtml5','excelHtml5','csvHtml5','pdfHtml5'
-      // ]
     };
   }
 

@@ -1,26 +1,27 @@
 <div class="container m-5">
   <h3 class="bg-dark text-white p-3 mt-5 text-center">Events</h3>
-  <form class="form-group rounded shadow p-3">
+  <form class="form-group rounded shadow p-3" [formGroup]="eventForm" (ngSubmit)="sendEventData()" ngNativeValidate>
     <div class="row">
       <div class="col-md-6">
         <label for="eventName" class="label-text form-label mb-0 mt-2">
           Event Name </label>
-        <input type="text" class="form-control rounded my-2" placeholder="Village Name" formControlName="villageName"
+        <input type="text" class="form-control rounded my-2" placeholder="Event Name" formControlName="eventName"
           id=" eventName" />
       </div>
       <div class="col-md-6">
         <label for="date" class="label-text form-label mb-0 mt-2">
           Event Date</label>
-        <input type="date" class="form-control rounded my-2" placeholder="date" formControlName="date" id=" date" />
+        <input type="date" class="form-control rounded my-2" placeholder="date" formControlName="eventDate"
+          id=" date" />
       </div>
       <div class="col-md-12">
         <label for="photo" class="label-text form-label">Event Photos</label>
-        <input type="file" class="form-control rounded my-2" placeholder="Photos" formControlName="photo" id=" photo"
+        <input type="file" class="form-control rounded my-2" placeholder="Photos" formControlName="uploader" id=" photo"
           enctype="multipart/form-data" (change)="onFileChange($event)" #fileInput />
       </div>
     </div>
     <div class="pl-auto">
-      <button class="btn btn-primary btn-sm mt-3  " type=" submit">
+      <button class="btn btn-primary form-control form-control-sm btn-sm mt-3  " type=" submit">
         Submit
       </button>
     </div>
@@ -34,8 +35,8 @@
     <table datatable [dtOptions]="dtOptions" class="table table-bordered text-center table-hover mt-5 ">
       <thead class="table-secondary">
         <tr>
-          <th>Name</th>
-          <th>Collage</th>
+          <th>Event Name</th>
+          <!-- <th>Collage</th> -->
           <th>Action</th>
         </tr>
       </thead>
@@ -43,7 +44,7 @@
         <tr *ngFor="let data of jsonData">
           <!-- <tr *ngFor="let data of getData"> -->
           <td>{{data.name}}</td>
-          <td>{{data.collage}}</td>
+          <!-- <td>{{data.collage}}</td> -->
           <td>
             <i class="fas fa-trash " data-toggle="modal" data-target="#delete"
               style="color:red; font-size: 17px;cursor: pointer;"></i>

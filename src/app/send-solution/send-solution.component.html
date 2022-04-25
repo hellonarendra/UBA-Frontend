@@ -1,0 +1,26 @@
+<div class="container">
+  <h3>Problem Statements</h3>
+  <div class="row">
+    <div class="col">
+      <!-- (ngSubmit)="sendSolution()" -->
+      <form class="form-group rounded shadow p-3" [formGroup]="solutionForm" ngNativeValidate>
+        <div class="row" *ngFor="let data of getData">
+          <div class="col-md-8">
+            <label for="eventName" class="label-text form-label mb-0 mt-2">
+              <h6>Problem Statement:</h6>
+              {{data.villageProblem}}
+            </label>
+            <textarea class="form-control form-control-sm rounded" rows="2" cols="50" placeholder="Enter Your Solution"
+              formControlName="comments" required></textarea>
+          </div>
+          <div class="col-md-4">
+            <button class="btn btn-primary  mt-5  " (click)="sendId(data._id)" type=" submit">
+              Submit
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>
