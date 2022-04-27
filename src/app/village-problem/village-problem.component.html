@@ -28,7 +28,7 @@
 
   <!-- ====================== Probem list ======================-->
   <div>
-    <h3 class="bg-dark text-white p-3 mt-5 text-center">Problem List</h3>
+    <h3 class="bg-dark text-white p-3 mt-5 text-center">Problem Status</h3>
 
     <table datatable [dtOptions]="dtOptions" class="table table-bordered text-center table-hover mt-5 ">
       <thead class="table-secondary">
@@ -57,6 +57,39 @@
 
 </div>
 
+
+<div class="container">
+  <h3 class="bg-dark text-white p-3 mt-5 text-center">Problem List and Solution</h3>
+  <div class="accordion" id="accordionExample">
+    <!-- <div class="card" *ngFor="let item of showIdea"> -->
+    <div class="card" *ngFor="let data of getData">
+      <div class="card-header" id="headingOne">
+        <h5 class="mb-0">
+          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+            aria-expanded="true" aria-controls="collapseOne">
+            {{data.villageProblem}}
+            <!-- cvcvcvcvcv -->
+          </button>
+        </h5>
+        <button>Mark as Done</button>
+      </div>
+
+      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <!-- *ngFor="let data of showIdea"> -->
+        <div>
+          <div class="card-body">
+            <!-- {{item.idea}} -->
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium, dolore consequuntur corporis
+            consectetur reiciendis doloremque laudantium dolor dolorum ipsam beatae fuga ullam ad laboriosam eius veniam
+            natus, suscipit nobis quod corrupti ipsa illum commodi alias nam. Veniam eos ad deserunt dolorem rerum
+            ducimus
+            quasi ratione sapiente. Non maxime sed explicabo.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <!--========================= Done model ======================-->
 
 <!-- <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

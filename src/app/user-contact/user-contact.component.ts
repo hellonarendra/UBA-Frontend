@@ -4,18 +4,19 @@ import { environment } from 'src/environments/environment';
 const serverUrl = environment.baseUrl;
 
 @Component({
-  selector: 'app-admin-gallary',
-  templateUrl: './admin-gallary.component.html',
-  styleUrls: ['./admin-gallary.component.scss']
+  selector: 'app-user-contact',
+  templateUrl: './user-contact.component.html',
+  styleUrls: ['./user-contact.component.scss']
 })
-export class AdminGallaryComponent implements OnInit {
+export class UserContactComponent implements OnInit {
+
   getData;
   constructor() { }
 
   dtOptions: any = {};
   ngOnInit(): void {
 
-    axios.get(serverUrl + 'user/getUbaMembers').then((response) => {
+    axios.get(serverUrl + 'contactUs/getAll').then((response) => {
       this.getData = response.data.data;
       console.log(this.getData);
     }).catch((error) => {

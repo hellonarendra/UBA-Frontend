@@ -1,0 +1,25 @@
+<div class="container mt-3 mb-3">
+
+  <table datatable [dtOptions]="dtOptions" class="table table-bordered text-center table-hover mt-5 ">
+    <thead class="table-secondary">
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Mobile No.</th>
+        <th>Message</th>
+        <!-- <th>Action</th> -->
+        <!-- <th>Action2</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <!-- <tr *ngFor="let data of jsonData"> -->
+      <tr *ngFor="let data of getData">
+        <td>{{data.name}}</td>
+        <td>{{data.email}}</td>
+        <td>{{data.phone_Number}}</td>
+        <td>{{data.message}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

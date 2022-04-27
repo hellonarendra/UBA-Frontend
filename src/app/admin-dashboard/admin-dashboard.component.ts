@@ -13,6 +13,7 @@ export class AdminDashboardComponent implements OnInit {
   village_problem = false;
   events = false;
   gallary = false;
+  userContact = false;
 
   ngOnInit(): void {
   }
@@ -21,21 +22,32 @@ export class AdminDashboardComponent implements OnInit {
     this.village_problem = false;
     this.events = false;
     this.gallary = false;
+    this.userContact = false;
   }
   villageProblem() {
     this.village_problem = true;
     this.uba_member = false;
     this.events = false;
     this.gallary = false;
+    this.userContact = false;
   }
   event() {
     this.events = true;
     this.village_problem = false;
     this.uba_member = false;
     this.gallary = false;
+    this.userContact = false;
   }
   photos() {
     this.gallary = true;
+    this.events = false;
+    this.village_problem = false;
+    this.uba_member = false;
+    this.userContact = false;
+  }
+  userProblem() {
+    this.userContact = true;
+    this.gallary = false;
     this.events = false;
     this.village_problem = false;
     this.uba_member = false;

@@ -28,6 +28,7 @@ import { ConfirmPasswordComponent } from './confirm-password/confirm-password.co
 import { MembersComponent } from './members/members.component';
 import { AdminGallaryComponent } from './admin-gallary/admin-gallary.component';
 import { SendSolutionComponent } from './send-solution/send-solution.component';
+import { UserContactComponent } from './user-contact/user-contact.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { SendSolutionComponent } from './send-solution/send-solution.component';
     MembersComponent,
     AdminGallaryComponent,
     SendSolutionComponent,
+    UserContactComponent,
   ],
   imports: [
     BrowserModule,
@@ -80,6 +82,7 @@ import { SendSolutionComponent } from './send-solution/send-solution.component';
       { path: 'members', component: MembersComponent },
       { path: 'admin-gallary', component: AdminGallaryComponent },
       { path: 'send-solution', component: SendSolutionComponent },
+      { path: 'user-contact', component: UserContactComponent },
     ])
   ],
   providers: [],

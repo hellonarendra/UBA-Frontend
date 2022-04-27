@@ -10,6 +10,8 @@
         Problem</a> -->
       <a class="list-group-item list-group-item-action bg-secondary text-dark" (click)="event()">Events
       </a>
+      <a class="list-group-item list-group-item-action bg-secondary text-dark" (click)="userProblem()">User-Contact
+      </a>
       <a class="list-group-item list-group-item-action bg-secondary text-dark" (click)="photos()">Gallary</a>
     </div>`
   </div>
@@ -43,10 +45,13 @@
       <ng-container *ngIf="events">
         <app-events> </app-events>
       </ng-container>
-      <ng-container *ngIf="gallary">
+      <ng-container *ngIf="userContact">
+        <app-user-contact> </app-user-contact>
+      </ng-container>
+      <!-- <ng-container *ngIf="gallary">
         <app-admin-gallary>
         </app-admin-gallary>
-      </ng-container>
+      </ng-container> -->
       <h1 class="mt-4">Simple Sidebar</h1>
       <p>The content Goes Here</p>
     </div>

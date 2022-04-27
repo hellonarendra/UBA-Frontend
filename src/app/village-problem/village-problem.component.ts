@@ -15,6 +15,7 @@ const serverUrl = environment.baseUrl;
 export class VillageProblemComponent implements OnInit {
   formGroup: FormGroup;
   getData;
+  showIdea;
   jsonData = [{
     name: 'bvhgh',
     collage: 'narendra@yopmail.com',
@@ -39,8 +40,10 @@ export class VillageProblemComponent implements OnInit {
 
     axios.get(serverUrl + 'chat/getComments').then((response) => {
       this.getData = response.data.data;
-      console.log(this.getData);
+      this.showIdea = response.data.data.comments;
+      console.log(this.showIdea);
 
+      console.log(this.getData);
     })
 
     this.dtOptions = {
