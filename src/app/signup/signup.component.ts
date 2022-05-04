@@ -31,29 +31,44 @@ export class SignupComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.formGroup = new FormGroup({
-      name: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required]),
-      mobileNo: new FormControl('', [Validators.required]),
-      password: new FormControl('', [Validators.required]),
-      role: new FormControl('', [Validators.required]),
-      uploader: new FormControl('', [Validators.required]),
-      branch: new FormControl('', [Validators.required]),
-      enrollmentNo: new FormControl('', [Validators.required])
-    })
+    if (this.ubaMembers) {
+      this.formGroup = new FormGroup({
+        name: new FormControl('', [Validators.required]),
+        email: new FormControl('', [Validators.required]),
+        mobileNo: new FormControl('', [Validators.required]),
+        password: new FormControl('', [Validators.required]),
+        role: new FormControl('', [Validators.required]),
+        uploader: new FormControl('', [Validators.required]),
+        branch: new FormControl('', [Validators.required]),
+        enrollmentNo: new FormControl('', [Validators.required])
+      })
+    }
+    else {
+      this.formGroup = new FormGroup({
+        name: new FormControl('', [Validators.required]),
+        email: new FormControl('', [Validators.required]),
+        mobileNo: new FormControl('', [Validators.required]),
+        password: new FormControl('', [Validators.required]),
+        role: new FormControl('', [Validators.required]),
+      })
+    }
   }
 
   registerProcess() {
     console.log(this.formGroup.value);
+
     let formData = new FormData();
-    formData.append('uploader', this.selectedFile, this.selectedFile.name);
-    formData.append('name', this.formGroup.get('name').value)
-    formData.append('email', this.formGroup.get('email').value)
-    formData.append('mobileNo', this.formGroup.get('mobileNo').value)
-    formData.append('password', this.formGroup.get('password').value)
-    formData.append('role', this.formGroup.get('role').value)
-    formData.append('branch', this.formGroup.get('branch').value)
-    formData.append('enrollmentNo', this.formGroup.get('enrollmentNo').value)
+    if (this.ubaMembers) {
+
+    }
+    else {
+      formData.append('name', this.formGroup.get('name').value)
+      formData.append('email', this.formGroup.get('email').value)
+      formData.append('mobileNo', this.formGroup.get('mobileNo').value)
+      formData.append('password', this.formGroup.get('password').value)
+      formData.append('role', this.formGroup.get('role').value)
+    }
+
     axios.post(serverUrl + `user/sign-up`, formData).then((response) => {
       console.log('Sign up API is Called:');
       console.log(response);

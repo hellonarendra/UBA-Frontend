@@ -1,18 +1,43 @@
 .img {
   width: 110%;
   border-radius: 10px;
-  border: 5px solid black;
+  border: 2px solid black;
 }
 
 .img:hover {
-  transform: scale(1.15);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  transform: scale(1.5);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   z-index: 2;
-  animation: mymove 5s infinite;
+  animation: mymove 5s 1;
 }
 
 @keyframes mymove {
   50% {
-    border: 15px solid lightblue;
+    border: 2px solid rgb(230, 179, 173);
   }
 }
+
+.img-group {
+  opacity: .98;
+  width: 100%;
+}
+
+.img-group:hover {
+  opacity: 1;
+  transform: scale(1.15);
+  z-index: 100;
+}
+
+.img-group {
+  animation: mymove 5s 1;
+}
+
+// @keyframes mymove {
+//   from {
+//     background-color: red;
+//   }
+
+//   to {
+//     background-color: blue;
+//   }
+// }

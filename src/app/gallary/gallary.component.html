@@ -4,37 +4,38 @@
     <img src="{{ item}}" alt="" class="img border shadow" />
   </div>
 </div> -->
-
-<ng-container *ngIf="mainImg " class="m-0">
-  <div class="shadow rounded mb-3 ">
-    <div class="row justify-content-start ">
-      <!-- <span class="">Faculty Co-ordinator</span> <br> -->
-      <div class="col " *ngFor="let item of images; let i = index">
-        <!-- <div class="col "> -->
-        <div class="card p-2 m-3" style="width: 20rem;">
-          <a (click)="showImg(i)"> <img src={{item}} class="card-img-top" alt="...">
-          </a>
-          <!-- ng-click="showImg()" -->
-          <div class="card-body">
-            <h5 class="card-title">Dr. Gopal Singh Bishth</h5>
-            <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+<div class="container">
+  <ng-container *ngIf="mainImg " class="m-0">
+    <div class="shadow rounded mb-3 ">
+      <div class="row justify-content-start ">
+        <!-- <span class="">Faculty Co-ordinator</span> <br> -->
+        <div class="col-4 " *ngFor="let item of images; let i = index">
+          <!-- <div class="col "> -->
+          <div class="card p-2 m-3">
+            <a (click)="showImg(i)"> <img src={{item}} class="card-img-top" alt="...">
+            </a>
+            <!-- ng-click="showImg()" -->
+            <div class="card-body">
+              <h5 class="card-title">Dr. Gopal Singh Bishth</h5>
+              <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
               content.
             </p> -->
-            <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+              <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</ng-container>
+  </ng-container>
 
-<ng-container *ngIf="viewImg">
-  <div class="row justify-content-start">
-    <div class="col " *ngFor="let item of images; let i = index">
-      <div class="card " style="width: 18rem;">
-        <img src={{item}} class="card-img-top" alt="...">
-        <!-- ng-click="showImg()" -->
+  <ng-container *ngIf="viewImg">
+    <div class="row justify-content-start">
+      <div class="col-4 " *ngFor="let item of images; let i = index">
+        <div class=" img-group card p-2 m-3 shadow rounded">
+          <img src={{item}} class="card-img-top" alt="...">
+          <!-- ng-click="showImg()" -->
+        </div>
       </div>
     </div>
-  </div>
-</ng-container>
+  </ng-container>
+</div>

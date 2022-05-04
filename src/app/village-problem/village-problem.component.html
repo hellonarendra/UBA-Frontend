@@ -1,4 +1,4 @@
-<div class="container m-5">
+<div class="container ">
   <h3 class="bg-dark text-white p-3 mt-5 text-center">Village Problem</h3>
   <form class="form-group rounded shadow p-3" [formGroup]="formGroup" (ngSubmit)="sendProblem()" ngNativeValidate>
     <div class="row">
@@ -62,28 +62,25 @@
   <h3 class="bg-dark text-white p-3 mt-5 text-center">Problem List and Solution</h3>
   <div class="accordion" id="accordionExample">
     <!-- <div class="card" *ngFor="let item of showIdea"> -->
-    <div class="card" *ngFor="let data of getData">
-      <div class="card-header" id="headingOne">
-        <h5 class="mb-0">
-          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
-            aria-expanded="true" aria-controls="collapseOne">
-            {{data.villageProblem}}
-            <!-- cvcvcvcvcv -->
-          </button>
-        </h5>
-        <button>Mark as Done</button>
-      </div>
+    <div class="card" *ngFor="let data of getData;let i=index;">
+      <div *ngIf="(data.status)=='pending'">
+        <div class="card-header" id="headingOne" *ngIf="(data.status)=='pending'">
+          <h5 class="mb-0 d-inline">
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+              aria-expanded="true" aria-controls="collapseOne">
+              {{data.villageProblem}}
+              <!-- cvcvcvcvcv -->
+            </button>
+          </h5>
+          <button class="ml-auto float-right" (click)="doneFun(data._id)">Mark as Done</button>
+        </div>
 
-      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-        <!-- *ngFor="let data of showIdea"> -->
-        <div>
-          <div class="card-body">
-            <!-- {{item.idea}} -->
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium, dolore consequuntur corporis
-            consectetur reiciendis doloremque laudantium dolor dolorum ipsam beatae fuga ullam ad laboriosam eius veniam
-            natus, suscipit nobis quod corrupti ipsa illum commodi alias nam. Veniam eos ad deserunt dolorem rerum
-            ducimus
-            quasi ratione sapiente. Non maxime sed explicabo.
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+          <!-- *ngFor="let data of showIdea"> -->
+          <div *ngFor=" let data of getData[i].comments">
+            <div class="card-body">
+              {{data.idea}}
+            </div>
           </div>
         </div>
       </div>

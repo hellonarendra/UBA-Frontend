@@ -5,3 +5,30 @@
 .btn-signUp:hover {
   background-color: rgba(0, 0, 255, 0.747);
 }
+
+.bg-image {
+  background-image: url(../../assets/signup.jpg);
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  // opacity: .5;
+  background-color: white;
+}
+
+form {
+  background-color: rgba(255, 255, 255, 0.639);
+  // opacity:  !important;
+}
+
+.neonText:hover {
+  box-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px rgba(105, 215, 178, 0.393),
+    0 0 20px rgba(105, 215, 178, 0.393),
+    0 0 20px rgba(105, 215, 178, 0.393),
+    0 0 20px rgba(105, 215, 178, 0.393),
+    0 0 20px rgba(105, 215, 178, 0.393),
+  ;
+}

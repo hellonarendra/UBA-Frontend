@@ -1,61 +1,126 @@
-<div>
-  <div class="row">
-    <div class="col-md-3 col-sm-2 pl-5 pt-2 pb-2 text-left"><img class="rounded img-thumbnail"
-        src="../../assets/UBA_logo.jpg" width="160rem" alt="uba logo"></div>
-    <div class="col-md-6 col-sm-8 text-center">
-      <p class="uba-heading">UNNAT BHARAT ABHIYAN</p>
-      <h5 class="juit-heading">JUIT Waknaghat Solan</h5>
-    </div>
-    <div class="col-md-3 col-sm-2 pr-5 pt-2 pb-2 text-right">
-      <img class="img-thumbnail" src="../../assets/juit_logo.png" width="150rem" alt="juit logo">
-    </div>
+<!-- <div> -->
+<div class="row">
+  <div class="col-md-3 col-sm-2 pl-5 pt-2 pb-2 text-left"><img class="rounded img-thumbnail"
+      src="../../assets/UBA_logo.jpg" width="160rem" alt="uba logo"></div>
+  <div class="col-md-6 col-sm-8 text-center neonText">
+    <p class="uba-heading">UNNAT BHARAT ABHIYAN</p>
+    <h5 class="juit-heading">JUIT Waknaghat Solan</h5>
   </div>
-
-  <!-- <nav class="navbar  navbar-expand-lg navbar-dark bg-dark"> -->
-  <nav class="navbar  navbar-expand-lg ">
-    <!-- <a class="nav-link nav-color" href="#">HOME</a> -->
-    <a class="nav-link home nav-color" href="#"><i class="fas fa-home"></i> HOME</a>
-    <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <!-- <li class="nav-item active home">
-          <a class="nav-link " href="#">HOME <span class="sr-only">(current)</span></a>
-        </li> -->
-        <li class="nav-item about">
-          <a class="nav-link nav-color" href="#" routerLinkActive="sam-primary" [routerLink]="['about']"><i
-              class="fas fa-address-card"></i> ABOUT</a>
-        </li>
-        <li class="nav-item gallery">
-          <a class="nav-link nav-color " href="#" routerLinkActive="sam-primary" [routerLink]="['gallary']"> <i
-              class="fas fa-photo-video"></i> GALLAERY</a>
-        </li>
-        <li class="nav-item members">
-          <a class="nav-link nav-color " href="#" routerLinkActive="sam-primary" [routerLink]="['members']"><i
-              class="fas fa-users"></i> MEMBERS</a>
-        </li>
-        <li class="nav-item in-news">
-          <a class="nav-link nav-color " href="#" routerLinkActive="sam-primary" [routerLink]="['send-solution']"><i
-              class="far fa-newspaper"></i>Problem</a>
-        </li>
-        <li class="nav-item visit">
-          <a class="nav-link nav-color" href="#"><i class="far fa-handshake"></i> VISIT</a>
-        </li>
-        <li class="nav-item contact mr-auto">
-          <a class="nav-link nav-color " href="#" routerLinkActive="sam-primary" [routerLink]="['conatct-us']"><i
-              class="fas fa-address-book"></i> CONTACT</a>
-        </li>
-        <li class="nav-item  login ml-auto ">
-          <a class="nav-link nav-color " href="#" routerLinkActive="sam-primary" [routerLink]="['login']"><i
-              class="fas fa-address-book"></i> LOGIN</a>
-        </li>
-        <li class="nav-item signup">
-          <a class="nav-link nav-color " href="#" routerLinkActive="sam-primary" [routerLink]="['signup']"><i
-              class="fas fa-address-book"></i> SIGNUP</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+  <div class="col-md-3 col-sm-2 pr-5 pt-2 pb-2 text-right">
+    <img class="img-thumbnail" src="../../assets/juit_logo.png" width="150rem" alt="juit logo">
+  </div>
 </div>
+
+<!-- </div> -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class=" nav-link home  text-white " href="#"><i class="fas fa-home"></i> HOME<span class="sr-only">(current)</span>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#" routerLinkActive="sam-primary" [routerLink]="['about']"><i
+            class="fas fa-address-card"></i> ABOUT <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#" routerLinkActive="sam-primary" [routerLink]="['gallary']"> <i
+            class="fas fa-photo-video"></i> GALLAERY <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#" routerLinkActive="sam-primary" [routerLink]="['members']"><i
+            class="fas fa-users"></i> MEMBERS <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active" *ngIf="guestLogin">
+        <a class="nav-link" href="#" routerLinkActive="sam-primary" [routerLink]="['send-solution']"><i
+            class="far fa-newspaper"></i> PROBLEMS <span class="sr-only">(current)</span></a>
+      </li>
+      <!-- <li class="nav-item active">
+        <a class="nav-link" href="#"><i class="far fa-handshake"></i> VISITS <span class="sr-only">(current)</span></a>
+      </li> -->
+      <li class="nav-item active">
+        <a class="nav-link" href="#" routerLinkActive="sam-primary" [routerLink]="['conatct-us']"><i
+            class="fas fa-address-book"></i> CONTACT <span class="sr-only">(current)</span></a>
+      </li>
+      <ng-container *ngIf="!currentUser">
+        <li class="nav-item active">
+          <a class="nav-link" href="#" routerLinkActive="sam-primary" [routerLink]="['login']"><i
+              class="fas fa-address-book"></i> LOGIN <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#" routerLinkActive="sam-primary" [routerLink]="['signup']"><i
+              class="fas fa-address-book"></i> SIGNUP <span class="sr-only">(current)</span></a>
+        </li>
+      </ng-container>
+      <!-- <ng-container> -->
+      <!-- <li class="nav-item active">
+          <a class="nav-link" href="#" routerLinkActive="sam-primary" onclick="logout()"><i
+              class="fas fa-address-book"></i>
+            LOGOUT <span class="sr-only">(current)</span></a>
+        </li> -->
+      <li class="nav-item dropdown ml-auto" *ngIf="currentUser" style="padding-right: 80px">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+          style="color: white;"><strong>{{currentUser.userName}}</strong>
+          <!-- <b data-target=".navbar-collapse.show" data-toggle="collapse">{{currentUser.userName}}</b> -->
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" (click)="logout()">Logout</a>
+        </div>
+      </li>
+      <!-- </ng-container> -->
+    </ul>
+
+  </div>
+</nav>
+
+
+<!--
+
+<nav class="navbar  navbar-expand-lg ">
+  <a class="nav-link home nav-color" href="#"><i class="fas fa-home"></i> HOME</a>
+  <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNav"
+    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+
+      <li class="nav-item about">
+        <a class="nav-link nav-color" href="#" routerLinkActive="sam-primary" [routerLink]="['about']"><i
+            class="fas fa-address-card"></i> ABOUT</a>
+      </li>
+      <li class="nav-item gallery">
+        <a class="nav-link nav-color " href="#" routerLinkActive="sam-primary" [routerLink]="['gallary']"> <i
+            class="fas fa-photo-video"></i> GALLAERY</a>
+      </li>
+      <li class="nav-item members">
+        <a class="nav-link nav-color " href="#" routerLinkActive="sam-primary" [routerLink]="['members']"><i
+            class="fas fa-users"></i> MEMBERS</a>
+      </li>
+      <li class="nav-item in-news">
+        <a class="nav-link nav-color " href="#" routerLinkActive="sam-primary" [routerLink]="['send-solution']"><i
+            class="far fa-newspaper"></i>Problem</a>
+      </li>
+      <li class="nav-item visit">
+        <a class="nav-link nav-color" href="#"><i class="far fa-handshake"></i> VISIT</a>
+      </li>
+      <li class="nav-item contact mr-auto">
+        <a class="nav-link nav-color " href="#" routerLinkActive="sam-primary" [routerLink]="['conatct-us']"><i
+            class="fas fa-address-book"></i> CONTACT</a>
+      </li>
+      <li class="nav-item  login ml-auto ">
+        <a class="nav-link nav-color " href="#" routerLinkActive="sam-primary" [routerLink]="['login']"><i
+            class="fas fa-address-book"></i> LOGIN</a>
+      </li>
+      <li class="nav-item signup">
+        <a class="nav-link nav-color " href="#" routerLinkActive="sam-primary" [routerLink]="['signup']"><i
+            class="fas fa-address-book"></i> SIGNUP</a>
+      </li>
+    </ul>
+  </div>
+</nav> -->

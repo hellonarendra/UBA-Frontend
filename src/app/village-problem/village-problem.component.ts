@@ -15,20 +15,10 @@ const serverUrl = environment.baseUrl;
 export class VillageProblemComponent implements OnInit {
   formGroup: FormGroup;
   getData;
+  problemId;
   showIdea;
-  jsonData = [{
-    name: 'bvhgh',
-    collage: 'narendra@yopmail.com',
-  },
-  {
-    name: 'Messi',
-    collage: 'narendra@yopmail.com',
-  },
-  {
-    name: 'Messi',
-    collage: 'narendra@yopmail.com',
-  },
-  ]
+  doneName = [];
+  finalData;
   constructor() { }
 
   dtOptions: any = {};
@@ -40,8 +30,8 @@ export class VillageProblemComponent implements OnInit {
 
     axios.get(serverUrl + 'chat/getComments').then((response) => {
       this.getData = response.data.data;
-      this.showIdea = response.data.data.comments;
-      console.log(this.showIdea);
+      // this.showIdea = response.data.data;
+      // console.log(this.showIdea);
 
       console.log(this.getData);
     })
@@ -54,7 +44,18 @@ export class VillageProblemComponent implements OnInit {
       dom: 'Bfrtip',
     };
   }
-
+  doneFun(doneId) {
+    this.problemId = doneId;
+    console.log(this.problemId);
+    const payload = {
+      id: doneId,
+    }
+    // this.doneName.push(payload);
+    this.finalData = payload;
+    axios.post(serverUrl + 'chat/updateStatus', this.finalData).then((response) => {
+      console.log(response);
+    })
+  }
   sendProblem() {
     axios.post(serverUrl + 'chat/add', this.formGroup.value).then((response) => {
       console.log(response);

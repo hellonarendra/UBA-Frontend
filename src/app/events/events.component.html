@@ -27,8 +27,6 @@
     </div>
   </form>
 
-
-
   <!-- =================  Event list Api ================ -->
   <div>
     <h3 class="bg-dark text-white p-3 mt-5 text-center">Event List</h3>
@@ -41,13 +39,13 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let data of jsonData">
+        <tr *ngFor="let data of getData">
           <!-- <tr *ngFor="let data of getData"> -->
-          <td>{{data.name}}</td>
+          <td>{{data.eventName}}</td>
           <!-- <td>{{data.collage}}</td> -->
           <td>
             <i class="fas fa-trash " data-toggle="modal" data-target="#delete"
-              style="color:red; font-size: 17px;cursor: pointer;"></i>
+              style="color:red; font-size: 17px;cursor: pointer;" (click)="deleteId(data._id)"></i>
           </td>
           <!-- (click)="deleteId(data._id)" -->
         </tr>

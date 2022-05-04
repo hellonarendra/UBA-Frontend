@@ -20,66 +20,36 @@ export class AdminUbaMemberComponent implements OnInit {
   eMobile;
   eEnrollment;
   eBranch;
+  userID;
   fileName = [];
   uploadedFiles = [];
   images = [];
   selectedFile: File;
   editForm;
-  // jsonData = [{
-  //   name: 'bvhgh',
-  //   collage: 'narendra@yopmail.com',
-  //   phone: '5454555454',
-  //   roll: 'yes',
-  //   branch: 'yes'
-  // },
-  // {
-  //   name: 'Messi',
-  //   collage: 'narendra@yopmail.com',
-  //   phone: '5454555454',
-  //   roll: 'yes',
-  //   branch: 'yes'
-  // },
-  // {
-  //   name: 'Messi',
-  //   collage: 'narendra@yopmail.com',
-  //   phone: '5454555454',
-  //   roll: 'yes',
-  //   branch: 'yes'
-  // },
-  // ]
-
-  // dtOptions: DataTables.Settings = {};
-  // dataTable: any;
-  // editForm = new FormGroup({
-  //   name: new FormControl("", [Validators.required]),
-  //   email: new FormControl("", [Validators.required]),
-  //   enrollmentNo: new FormControl("", [Validators.required]),
-  //   branch: new FormControl("", [Validators.required]),
-  //   mobileNo: new FormControl("", [Validators.required]),
-  //   uploader: new FormControl("", [Validators.required]),
-  // });
+  deletePayload = {};
   constructor(private modalService: NgbModal, config: NgbModalConfig,
     private cd: ChangeDetectorRef) { }
   dtOptions: any = {};
 
   ngOnInit(): void {
+    this.userID = 1;
     this.editForm = new FormGroup({
+      // userId: this.userID,
       name: new FormControl("", [Validators.required]),
-      email: new FormControl("", [Validators.required]),
-      enrollmentNo: new FormControl("", [Validators.required]),
+      // email: new FormControl("", [Validators.required]),
+      // enrollmentNo: new FormControl("", [Validators.required]),
       branch: new FormControl("", [Validators.required]),
       mobileNo: new FormControl("", [Validators.required]),
       uploader: new FormControl("", [Validators.required]),
     });
 
+    console.log("get api call:");
     axios.get(serverUrl + 'user/getUbaMembers').then((response) => {
       this.getData = response.data.data;
       console.log(this.getData);
     }).catch((error) => {
       console.log(error);
     });
-    console.log("get api call:")
-    // console.log(this.jsonData);
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 10,
@@ -88,9 +58,7 @@ export class AdminUbaMemberComponent implements OnInit {
       dom: 'Bfrtip',
     };
   }
-  deleteId(deleteId) {
-    this.deleteRowId = deleteId;
-  }
+
   editId(editId, name, email, mobile, enrollment, branch) {
     this.eId = editId;
     this.eName = name;
@@ -101,41 +69,79 @@ export class AdminUbaMemberComponent implements OnInit {
   }
   edit() {
     let editFormData = new FormData();
-    editFormData.append('uploader', this.selectedFile, this.selectedFile.name);
+    // this.uploadedFiles.forEach((res) => {
+    //   console.log(res);
+    //   editFormData.append('profilePhoto', res[0]);
+    // });
+    editFormData.append('userId', this.eId)
+    editFormData.append('uploader', this.selectedFile);
     editFormData.append('name', this.editForm.get('name').value)
     editFormData.append('branch', this.editForm.get('branch').value)
     editFormData.append('mobileNo', this.editForm.get('mobileNo').value)
-    editFormData.append('enrollmentNo', this.editForm.get('enrollmentNo').value)
-    editFormData.append('email', this.editForm.get('email').value)
+    // editFormData.append('enrollmentNo', this.editForm.get('enrollmentNo').value)
+    // editFormData.append('email', this.editForm.get('email').value)
+    console.log(editFormData);
+    // const payload = {
+    //   name: this.eName,
+    //   userId: this.eId,
+    //   mobileNo: this.eMobile,
+    //   branch: this.eBranch,
+    //   profilePhoto: this.selectedFile
+    // }
 
-    // axios.post(serverUrl + 'user/update', this.editForm.value + this.eId).then((response) => {
-    axios.post(serverUrl + 'user/update', editFormData, this.eId).then((response) => {
+    axios.post(serverUrl + 'user/update', editFormData).then((response) => {
       console.log("This is Update API");
-      console.log(editFormData + this.eId);
-
       console.log(this.eId);
       console.log(response);
-
-
     }).catch((error) => {
       console.log(error);
     });
     console.log("Edit function is called:");
+  }
+  deleteId(deleteId) {
+    this.deleteRowId = deleteId;
+    console.log("deleteId id", this.deleteRowId);
 
   }
-
   delete() {
+    // this.deletePayload = {
+    //   id: this.deleteRowId
+    // }
+    const deletePayload = {
+      id: this.deleteRowId
+    }
     console.log("Delete function is called:");
-    axios.delete(serverUrl + 'delete/' + this.deleteRowId).then((response) => {
-      console.log("This is Delete API");
+    axios.post(serverUrl + 'user/delete', deletePayload).then((response) => {
       console.log(response);
-
+      console.log("User/delete API is called ");
     }).catch((error) => {
       console.log(error)
     })
-
   }
+
   onFileChange(event) {
+    // console.log(i);
+    // this.edit
     this.selectedFile = event.target.files[0];
+    // if (event.target.files && event.target.files[0]) {
+    //   var filesAmount = event.target.files;
+    //   this.fileName = event.target.files
+    //   for (let i = 0; i < filesAmount.length; i++) {
+    //     this.uploadedFiles.push(filesAmount);
+    //     var reader = new FileReader();
+    //     let type = filesAmount[i].type.split('/')
+    //     reader.onload = (event: any) => {
+    //       let obj = {
+    //         'id': i,
+    //         'src': event.target.result,
+    //         'type': type[0]
+    //       }
+    //       this.images.push(obj);
+    //       this.cd.detectChanges();
+    //     }
+    //     reader.readAsDataURL(event.target.files[i]);
+    //     this.cd.markForCheck();
+    //   }
+    // }
   }
 }

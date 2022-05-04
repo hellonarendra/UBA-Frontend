@@ -15,6 +15,7 @@
         <th>Enrollment</th>
         <th>Mobile No.</th>
         <th>Action</th>
+        <th>Action</th>
         <!-- <th>Action2</th> -->
       </tr>
     </thead>
@@ -29,6 +30,8 @@
         <td> <i class="fas fa-edit " data-toggle="modal" data-target="#edit"
             style="color:grey;font-size: 17px; margin-right: 5px; cursor: pointer;"
             (click)="editId(data._id,data.name,data.email,data.mobileNo,data.enrollmentNo,data.branch)">edit</i>
+        </td>
+        <td>
           <i class="fas fa-trash " data-toggle="modal" data-target="#delete"
             style="color:red; font-size: 17px;cursor: pointer;" (click)="deleteId(data._id)"></i>
         </td>
@@ -58,7 +61,8 @@
           <div class="row">
             <div class="form-group col-6">
               <label for="exampleInputName">Name</label><br>
-              <input type="text" value="{{eName}}" formControlName="name" maxlength="20" required>
+              <!-- <input type="text" value="{{eName}}" formControlName="name" maxlength="20" required> -->
+              <input type="text" [(ngModel)]="eName" formControlName="name" maxlength="20" required>
             </div>
             <!-- <div class="form-group col-6">
               <label for="example">Email</label><br>
@@ -71,12 +75,14 @@
             </div> -->
             <div class="form-group col-6">
               <label for="example">Branch </label><br>
-              <input type="text" value="{{eBranch}}" formControlName="branch" required>
+              <!-- <input type="text" value="{{eBranch}}" formControlName="branch" required> -->
+              <input type="text" [(ngModel)]="eBranch" formControlName="branch" required>
             </div>
 
             <div class="form-group col-6">
               <label for="example">Mobile </label><br>
-              <input type="text" value="{{eMobile}}" formControlName="mobileNo" maxlength="10" required>
+              <!-- <input type="text" value="{{eMobile}}" formControlName="mobileNo" maxlength="10" required> -->
+              <input type="text" [(ngModel)]="eMobile" formControlName="mobileNo" maxlength="10" required>
             </div>
 
             <div class="form-group col-6">
@@ -100,29 +106,26 @@
       </div>
     </div>
   </div>
-  <!-- </div> -->
+</div>
 
-  <!-- //////////////////////////////  Modal edit end here ////////////////////////////// -->
-
-
-  <!-- //////////////////////////////  Modal delete start here ////////////////////////////// -->
+<!-- //////////////////////////////  Modal edit end here ////////////////////////////// -->
 
 
-  <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-body">
+<!-- //////////////////////////////  Modal delete start here ////////////////////////////// -->
 
-          <p>Are you sure you want to delete</p>
-          <!-- (click)="delete()" -->
-          <button class="btn btn-primary" type="button" data-dismiss="modal" (click)="delete()">Yes</button>
-          <button class="btn btn-default ml-2" data-dismiss="modal">cancel</button>
 
-        </div>
+<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <p>Are you sure you want to delete</p>
+        <!-- (click)="delete()" -->
+        <button class="btn btn-danger" type="button" data-dismiss="modal" (click)="delete()">Yes</button>
+        <button class="btn btn-success ml-2" data-dismiss="modal">No</button>
       </div>
     </div>
   </div>
+</div>
 
 
-  <!-- //////////////////////////////  Modal delete end here ////////////////////////////// -->
+<!-- //////////////////////////////  Modal delete end here ////////////////////////////// -->

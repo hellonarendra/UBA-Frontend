@@ -14,19 +14,9 @@ export class EventsComponent implements OnInit {
   deleteRowId;
   selectedFile: File;
   eventForm;
-  jsonData = [{
-    name: 'bvhgh',
-    collage: 'narendra@yopmail.com',
-  },
-  {
-    name: 'Messi',
-    collage: 'narendra@yopmail.com',
-  },
-  {
-    name: 'Messi',
-    collage: 'narendra@yopmail.com',
-  },
-  ]
+  getData;
+  deleteName = [];
+  finalData = {};
 
   constructor() { }
 
@@ -38,6 +28,12 @@ export class EventsComponent implements OnInit {
       uploader: new FormControl('', [Validators.required]),
     })
 
+    axios.get(serverUrl + 'gallery/getAll').then((response) => {
+      this.getData = response.data.data;
+      console.log("this is getAll api:");
+
+      console.log(response);
+    })
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 10,
@@ -58,7 +54,7 @@ export class EventsComponent implements OnInit {
     eventData.append('eventDate', this.eventForm.get('eventDate').value)
 
     axios.post(serverUrl + `gallery/add`, eventData).then((response) => {
-      console.log('Sign up API is Called:');
+      console.log('gallery Add API is Called:');
       console.log(response);
       if (response) {
         this.eventForm.reset();
@@ -76,9 +72,23 @@ export class EventsComponent implements OnInit {
 
   deleteId(deleteId) {
     this.deleteRowId = deleteId;
+    console.log("this is delete ID:", this.deleteRowId);
+    const payload = {
+      id: deleteId,
+    }
+    // this.deleteName.push(payload);
+    this.finalData = payload;
   }
 
   delete() {
-    console.log("delete API is called ");
+    console.log("delete function is called ");
+    console.log('finaldata', this.finalData);
+    // axios.post(serverUrl + 'gallery/delete', this.deleteRowId).then((response) => {
+    axios.post(serverUrl + 'gallery/delete', this.finalData).then((response) => {
+      console.log(response);
+      console.log("Delete Api successfully executed");
+    }).catch((error) => {
+      console.log(error);
+    });
   }
 }

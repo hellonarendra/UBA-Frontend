@@ -2,6 +2,23 @@
 
 .row {
   margin: 0px;
+  background-image: url(../../assets/header1.jpg);
+  background-size: cover;
+}
+
+
+
+.neonText {
+  color: rgb(132, 81, 81);
+  text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #0fa,
+    0 0 82px #0fa,
+    0 0 92px #0fa,
+    0 0 102px #0fa,
+    0 0 151px #0fa;
 }
 
 // **************** logo ***************
@@ -50,9 +67,24 @@
   font-weight: 700;
 }
 
+button {
+  color: white;
+}
+
 .nav-link {
-  padding: 10px 12px 10px 12px;
+  // padding: 8px 12px 10px 12px;
   margin: 0px 10px 0px 10px;
+  color: white;
+}
+
+// .navbar-toggler {
+//   color: red;
+// }
+
+.nav-link:hover {
+  // color: rgb(153, 85, 51);
+  color: $background-theme !important;
+
 }
 
 .nav-color {

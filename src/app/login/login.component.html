@@ -1,40 +1,44 @@
-<div class="container col-md-6 col-sm-6 col-xs-12 mb-5 " style="margin-top: 5rem ;">
-
-  <form class="form-group px-3 pb-3 pt-3 rounded border " [formGroup]="formGroup" (ngSubmit)="loginProcess()"
-    ngNativeValidate>
-    <h2 class="text-center pb-4 ml-auto mr-auto ">Member Login</h2>
-    <div class="col-md-12">
-      <label for="username" class="label-text form-label mb-0 mt-2">
-        Username *</label>
-      <input type="email" class="form-control rounded my-2" placeholder="Username/Email" formControlName="email" id="
+<!-- <div class="bg-img">
+  <img src="../../assets/rural.jpg" alt="">
+</div> -->
+<div class="bg-image">
+  <div class="container col-md-6 col-sm-6 col-xs-12 pb-5 " style="padding-top: 5rem ;">
+    <form class="form-group px-3 pb-3 pt-3 rounded border neonText" [formGroup]="formGroup" (ngSubmit)="loginProcess()"
+      ngNativeValidate>
+      <h2 class="text-center pb-4 ml-auto mr-auto ">Member Login</h2>
+      <div class="col-md-12">
+        <label for="username" class="label-text form-label mb-0 mt-2">
+          Username *</label>
+        <input type="email" class="form-control rounded my-2" placeholder="Username/Email" formControlName="email" id="
         email" />
-    </div>
+      </div>
 
-    <div class="col-md-12">
-      <label for="password" class="label-text form-label mb-0 mt-2">Password *</label>
-      <input type="password" class="form-control rounded lh-sm" formControlName="password" placeholder="Password"
-        id="password" />
-    </div>
-    <div class="row">
-      <!-- <div class="col-md-6 col-xs-6  mt-2">
+      <div class="col-md-12">
+        <label for="password" class="label-text form-label mb-0 mt-2">Password *</label>
+        <input type="password" class="form-control rounded lh-sm" formControlName="password" placeholder="Password"
+          id="password" />
+      </div>
+      <div class="row">
+        <!-- <div class="col-md-6 col-xs-6  mt-2">
         <input class="ml-3" formControlName="rememberMe" type="checkbox" id="rememberMe">
         <label class="label-text form-check-label pl-2" for="rememberMe">
           Remember Me
         </label>
       </div> -->
-      <div class="col-md-6 col-xs-6  mt-2">
-        <a class="forget-password  float-right mr-3" [routerLink]="['/forgetPassword']">Forget Password ?</a>
+        <div class="col-md-6 col-xs-6  mt-2">
+          <a class="forget-password  float-right mr-3" [routerLink]="['/forgetPassword']">Forget Password ?</a>
+        </div>
       </div>
-    </div>
 
-    <div class="col-12 ">
-      <button class="btn btn-primary btn-login col-12 my-1" type="submit">Login</button>
-    </div>
-    <div class="text-center mt-2">
-      <p class="label-text">
-        Not a member?
-        <a [routerLink]="['/signup']" class="register"> Register Here</a>
-      </p>
-    </div>
-  </form>
+      <div class="col-12 ">
+        <button class="btn btn-primary btn-login col-12 my-1" type="submit">Login</button>
+      </div>
+      <div class="text-center mt-2">
+        <p class="label-text">
+          Not a member?
+          <a [routerLink]="['/signup']" class="register"> Register Here</a>
+        </p>
+      </div>
+    </form>
+  </div>
 </div>

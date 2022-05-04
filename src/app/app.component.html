@@ -1,3 +1,11 @@
-<app-header></app-header>
-<router-outlet></router-outlet>
-<app-footer></app-footer>
+<div *ngIf="showUser">
+  <app-header></app-header>
+  <router-outlet></router-outlet>
+  <app-footer></app-footer>
+</div>
+
+<div *ngIf="showAdmin">
+  <app-admin-dashboard></app-admin-dashboard>
+  <!-- <router-outlet></router-outlet> -->
+  <!-- <app-footer></app-footer> -->
+</div>
