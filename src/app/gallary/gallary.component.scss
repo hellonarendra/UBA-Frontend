@@ -11,12 +11,6 @@
   animation: mymove 5s 1;
 }
 
-@keyframes mymove {
-  50% {
-    border: 2px solid rgb(230, 179, 173);
-  }
-}
-
 .img-group {
   opacity: .98;
   width: 100%;
@@ -25,19 +19,98 @@
 .img-group:hover {
   opacity: 1;
   transform: scale(1.15);
+  // animation: mymove 2s infinite;
+  // animation: inlarge 1s;
   z-index: 100;
 }
 
 .img-group {
-  animation: mymove 5s 1;
+  animation: mymove 2s infinite;
 }
 
-// @keyframes mymove {
-//   from {
-//     background-color: red;
-//   }
+.cardDiv,
+.mainDiv {
+  animation: mymove 2s infinite;
+}
 
-//   to {
-//     background-color: blue;
-//   }
-// }
+.mainImage:hover {
+  -webkit-filter: grayscale(50%);
+  /* Safari 6.0 - 9.0 */
+  filter: grayscale(50%);
+}
+
+.allPhoto {
+  -webkit-filter: grayscale(30%);
+  /* Safari 6.0 - 9.0 */
+  filter: grayscale(30%);
+}
+
+.allPhoto:hover {
+  /* Start the vibrate animation with duration 0.5 seconds */
+  animation: vibrate 0.5s;
+  /* When the animation is finished, start again */
+  animation-iteration-count: 0.5;
+  -webkit-filter: grayscale(0%);
+  /* Safari 6.0 - 9.0 */
+  filter: grayscale(0%);
+}
+
+@keyframes mymove {
+  from {
+    border: 2px solid red;
+    // transform: scale(1);
+  }
+
+  to {
+    border: 2px solid blue;
+    // transform: scale(1.15);
+  }
+}
+
+
+
+@keyframes vibrate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  10% {
+    transform: rotate(-0.5deg);
+  }
+
+  20% {
+    transform: rotate(0.5deg);
+  }
+
+  30% {
+    transform: rotate(0deg);
+  }
+
+  40% {
+    transform: rotate(0.5deg);
+  }
+
+  50% {
+    transform: rotate(-0.5deg);
+  }
+
+  60% {
+    transform: rotate(0deg);
+  }
+
+  70% {
+    transform: rotate(-0.5deg);
+  }
+
+  80% {
+    transform: rotate(0.5deg);
+  }
+
+  90% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(-0.5deg);
+  }
+}

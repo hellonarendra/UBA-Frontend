@@ -1,0 +1,23 @@
+<!-- <pdf-viewer [src]="doc" [render-text]="true" style="display: block;">
+</pdf-viewer> -->
+<div class="container p-5">
+  <table class="table border ">
+    <thead class="thead-dark">
+      <tr>
+        <th class="pl-5">Document Name</th>
+        <th>Veiw</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- <tr *ngFor="let data of pdf"> -->
+      <tr *ngFor="let data of getData">
+        <td class="capitalize pl-5">{{data.reportName}}</td>
+        <td> <a href="{{data.reportFile}}  " class="link " target="_blank"><i class="fa fa-eye icon"
+              aria-hidden="true"></i></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+</div>

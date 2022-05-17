@@ -1,7 +1,22 @@
 <div class="d-flex" id="wrapper">
   <!-- Sidebar -->
   <div class="bg-secondary text-dark " id="sidebar-wrapper">
-    <div class="sidebar-heading border-bottom">Admin </div>
+    <!-- <div class="sidebar-heading border-bottom">Admin </div> -->
+    <div class="sidebar-heading border-bottom" *ngIf="!currentUser">
+      Admin</div>
+    <ng-container *ngIf="currentUser">
+      <a class="dropdown-item pl-4 pb-2 pt-3" (click)="logout()">Logout</a>
+      <!-- <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+        style="color: white;"><strong>{{currentUser.userName}}</strong> -->
+      <!-- <b data-target=".navbar-collapse.show" data-toggle="collapse">{{currentUser.userName}}</b> -->
+      <!-- </a> -->
+
+      <!-- <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" (click)="logout()">Logout</a>
+      </div> -->
+    </ng-container>
+    <!-- </div> -->
     <div class="list-group list-group-flush">
       <a class="list-group-item list-group-item-action bg-secondary text-dark" (click)="ubaMember()">UBA Members</a>
       <a class="list-group-item list-group-item-action bg-secondary text-dark" (click)="villageProblem()">Village
@@ -12,7 +27,9 @@
       </a>
       <a class="list-group-item list-group-item-action bg-secondary text-dark" (click)="userProblem()">User-Contact
       </a>
-      <a class="list-group-item list-group-item-action bg-secondary text-dark" (click)="photos()">Gallary</a>
+      <a class="list-group-item list-group-item-action bg-secondary text-dark" (click)="postReport()">Post-Report
+      </a>
+      <!-- <a class="list-group-item list-group-item-action bg-secondary text-dark" (click)="photos()">Gallary</a> -->
     </div>`
   </div>
   <!-- /#sidebar-wrapper -->
@@ -36,24 +53,31 @@
       </div> -->
     </nav>
     <div class="container-fluid">
-      <ng-container *ngIf="uba_member">
+      <!-- <ng-container class="mb-5" *ngIf="uba_member">
+        <app-admin-uba-member> </app-admin-uba-member>
+      </ng-container> -->
+      <ng-container class="mb-5" *ngIf="!village_problem && !events &&!userContact&&!post_report">
         <app-admin-uba-member> </app-admin-uba-member>
       </ng-container>
-      <ng-container *ngIf="village_problem">
+      <ng-container class="mb-5" *ngIf="village_problem">
         <app-village-problem></app-village-problem>
       </ng-container>
-      <ng-container *ngIf="events">
+      <ng-container class="mb-5" *ngIf="events">
         <app-events> </app-events>
       </ng-container>
-      <ng-container *ngIf="userContact">
+      <ng-container class="mb-5" *ngIf="userContact">
         <app-user-contact> </app-user-contact>
+      </ng-container>
+      <ng-container class="mb-5" *ngIf="post_report">
+        <app-post-report> </app-post-report>
       </ng-container>
       <!-- <ng-container *ngIf="gallary">
         <app-admin-gallary>
         </app-admin-gallary>
       </ng-container> -->
-      <h1 class="mt-4">Simple Sidebar</h1>
-      <p>The content Goes Here</p>
+      <!-- <h1 class="text-center">Simple Sidebar</h1>
+      <p>The content Goes Here</p> -->
+
     </div>
   </div>
   <!-- /#page-content-wrapper -->

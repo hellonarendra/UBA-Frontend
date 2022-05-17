@@ -4,8 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import axios from 'axios';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { ThrowStmt } from '@angular/compiler';
-import { data } from 'jquery';
+import { ToastrService } from 'ngx-toastr';
 const serverUrl = environment.baseUrl;
 
 @Component({
@@ -21,7 +20,7 @@ export class SendSolutionComponent implements OnInit {
   probId;
   _id;
   questionAnswer = []
-  constructor(private http: HttpClient) { }
+  constructor(private toastr: ToastrService, private http: HttpClient) { }
 
   ngOnInit(): void {
 
@@ -70,6 +69,13 @@ export class SendSolutionComponent implements OnInit {
     console.log('Final data:', finalData);
     axios.post(serverUrl + 'chat/pitchIdea', finalData).then((response) => {
       console.log(response);
+      if (response) {
+        this.toastr.success('Solution Send Successfully');
+      }
+      else {
+        this.toastr.error('Something went Wrong', 'Please Try Again');
+      }
+      // this.questionAnswer.reset();
     }).catch((error) => {
       console.log(error);
     });

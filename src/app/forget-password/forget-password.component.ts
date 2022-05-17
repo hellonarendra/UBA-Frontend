@@ -15,11 +15,11 @@ export class ForgetPasswordComponent implements OnInit {
   forgetForm: FormGroup;
   userId;
   selectedId: number;
-  constructor(
+  constructor(private toastr: ToastrService,
     private activatedRoute: ActivatedRoute,
     private router: Router,) { }
   ngOnInit(): void {
-    this.userId = this.activatedRoute.snapshot.paramMap.get('uid')
+    // this.userId = this.activatedRoute.snapshot.paramMap.get('uid')
     // this.forgetForm = new FormGroup({
     //   id: this.userId,
     //   password: new FormControl("", [Validators.required]),
@@ -32,17 +32,19 @@ export class ForgetPasswordComponent implements OnInit {
   sendEmail() {
     axios.post(serverUrl + 'user/sendForgetEmail', this.forgetForm.value)
       .then((response) => {
-        console.log(response);
-
-        // if (response) {
-        //   this.toastr.success('Please login with your credentials', 'Password set successfully');
-        //   this.router.navigate(['/login'], { relativeTo: this.activatedRoute })
-        // }
-        // else {
-        //   this.toastr.error("Please try again", "Some thing went wrong");
-        // }
-      }
-      );
+        console.log('response of email', response);
+        if (response) {
+          this.toastr.success('Please Check Your Email', 'Email send Successfully');
+          this.forgetForm.reset();
+          // this.router.navigate(['/confirmPassword'], { relativeTo: this.activatedRoute })
+          this.router.navigate(['/home'], { relativeTo: this.activatedRoute })
+        }
+        else {
+          this.toastr.error("Please try again", "Some thing went wrong");
+        }
+      }).catch((error) => {
+        console.log(error);
+      });;
   }
 
 }

@@ -1,39 +1,39 @@
-<!-- <div class="row justify-content-around  ml-0 mr-0 mt-3">
-  <div class="row justify-content-around align-items-center ml-0 mr-0 mt-3">
-  <div class="col-lg-3 col-md-6 col-sm-12  p-0 my-3 mx-1 div-2 " *ngFor="let item of images">
-    <img src="{{ item}}" alt="" class="img border shadow" />
-  </div>
+<!-- <div *ngFor="let item of getData">
+  <ng-image-slider [images]="item.eventPhoto" #nav></ng-image-slider>
+  <ng-image-slider [images]={{item.eventPhoto}} #nav></ng-image-slider>
 </div> -->
-<div class="container">
-  <ng-container *ngIf="mainImg " class="m-0">
-    <div class="shadow rounded mb-3 ">
-      <div class="row justify-content-start ">
-        <!-- <span class="">Faculty Co-ordinator</span> <br> -->
-        <div class="col-4 " *ngFor="let item of images; let i = index">
-          <!-- <div class="col "> -->
-          <div class="card p-2 m-3">
-            <a (click)="showImg(i)"> <img src={{item}} class="card-img-top" alt="...">
-            </a>
-            <!-- ng-click="showImg()" -->
-            <div class="card-body">
-              <h5 class="card-title">Dr. Gopal Singh Bishth</h5>
-              <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.
-            </p> -->
-              <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+
+
+<div class="container-fluid">
+  <div class="conatiner">
+    <ng-container *ngIf="mainImg " class="m-0">
+      <div class="mainDiv rounded mb-3 ">
+        <div class="row  justify-content-start ">
+          <div class="col-3 " *ngFor="let data of getData; let i=index">
+            <div class="card cardDiv p-2 m-3 shadow">
+              <a (click)="showImg(data.eventPhoto)">
+                <img src={{data.eventPhoto[0]}} alt="Event Photos" class="card-img-top mainImage" alt="..."
+                  height="250em" width="250rem">
+              </a>
+              <div class="card-body">
+                <h5 class="card-title">{{data.eventName}}</h5>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </ng-container>
+    </ng-container>
+  </div>
 
   <ng-container *ngIf="viewImg">
+    <div class="text-left">
+      <button class=" m-3 ml-0 btn btn-primary" (click)="backButton()">Click Here To Go Back</button>
+    </div>
     <div class="row justify-content-start">
-      <div class="col-4 " *ngFor="let item of images; let i = index">
+      <div class="col-3 " *ngFor="let data of showImage; let i=index">
         <div class=" img-group card p-2 m-3 shadow rounded">
-          <img src={{item}} class="card-img-top" alt="...">
-          <!-- ng-click="showImg()" -->
+          <img src={{data}} alt="All event Photo" class="card-img-top  allPhoto" alt="..." height="250em"
+            width="250rem">
         </div>
       </div>
     </div>

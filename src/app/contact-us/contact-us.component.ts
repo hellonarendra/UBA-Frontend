@@ -16,8 +16,7 @@ export class ContactUsComponent implements OnInit {
   formGroup: FormGroup;
   whatsappNumber = +917734942883;
   whatsappText = "Hi,Welcome to UBA JUIT Please Enter your query.";
-  constructor(
-    private deviceService: DeviceDetectorService,) { }
+  constructor(private toastr: ToastrService, private deviceService: DeviceDetectorService,) { }
 
   ngOnInit(): void {
     this.formGroup = new FormGroup({
@@ -31,16 +30,24 @@ export class ContactUsComponent implements OnInit {
   contactUs() {
     axios.post(serverUrl + 'contactUs/add', this.formGroup.value).then((response) => {
       console.log(response);
+      if (response) {
+        this.toastr.success('Congratulations', 'Your Message Send Successfully');
+      }
+      else {
+        this.toastr.error('Something went Wrong', 'Please try again');
+      }
     }).catch((error) => {
       console.log(error);
     });
   }
   getWhatsappMsg() {
     if (this.deviceService.isMobile()) {
+      this.toastr.success('WhatsApp is getting open');
       window.open("https://api.whatsapp.com/send?phone=" + this.whatsappNumber +
         "&text=" +
         this.whatsappText);
     } else {
+      this.toastr.success('WhatsApp web is getting open');
       window.open("https://web.whatsapp.com/send?phone=" + this.whatsappNumber +
         "&text=" +
         this.whatsappText);

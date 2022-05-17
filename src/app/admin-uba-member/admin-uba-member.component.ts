@@ -27,7 +27,7 @@ export class AdminUbaMemberComponent implements OnInit {
   selectedFile: File;
   editForm;
   deletePayload = {};
-  constructor(private modalService: NgbModal, config: NgbModalConfig,
+  constructor(private toastr: ToastrService, private modalService: NgbModal, config: NgbModalConfig,
     private cd: ChangeDetectorRef) { }
   dtOptions: any = {};
 
@@ -93,6 +93,12 @@ export class AdminUbaMemberComponent implements OnInit {
       console.log("This is Update API");
       console.log(this.eId);
       console.log(response);
+      if (response) {
+        this.toastr.success('Edited Successfully', 'Congratulations');
+      }
+      else {
+        this.toastr.error('Please try again', 'Something went wrong');
+      }
     }).catch((error) => {
       console.log(error);
     });
@@ -114,6 +120,13 @@ export class AdminUbaMemberComponent implements OnInit {
     axios.post(serverUrl + 'user/delete', deletePayload).then((response) => {
       console.log(response);
       console.log("User/delete API is called ");
+      if (response) {
+        this.toastr.success('User is Deleted Successfully');
+      }
+      else {
+        this.toastr.error('Please try again', 'Something went wrong');
+      }
+
     }).catch((error) => {
       console.log(error)
     })

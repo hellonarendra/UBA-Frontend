@@ -8,6 +8,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { DataTablesModule } from "angular-datatables";
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,6 +31,8 @@ import { MembersComponent } from './members/members.component';
 import { AdminGallaryComponent } from './admin-gallary/admin-gallary.component';
 import { SendSolutionComponent } from './send-solution/send-solution.component';
 import { UserContactComponent } from './user-contact/user-contact.component';
+import { DownloadComponent } from './download/download.component';
+import { PostReportComponent } from './post-report/post-report.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +55,8 @@ import { UserContactComponent } from './user-contact/user-contact.component';
     AdminGallaryComponent,
     SendSolutionComponent,
     UserContactComponent,
+    DownloadComponent,
+    PostReportComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,6 +68,8 @@ import { UserContactComponent } from './user-contact/user-contact.component';
     BrowserAnimationsModule,
     NgImageSliderModule,
     DataTablesModule,
+    PdfViewerModule,
+    ToastrModule.forRoot(),
     MDBBootstrapModule.forRoot(),
     RouterModule.forRoot([
       { path: 'home', component: HomeComponent },
@@ -78,11 +86,13 @@ import { UserContactComponent } from './user-contact/user-contact.component';
       { path: 'village-problem', component: VillageProblemComponent },
       { path: 'events', component: EventsComponent },
       { path: 'forgetPassword', component: ForgetPasswordComponent },
-      { path: 'confirmPassword', component: ConfirmPasswordComponent },
+      { path: 'confirmPassword/:uid', component: ConfirmPasswordComponent },
       { path: 'members', component: MembersComponent },
       { path: 'admin-gallary', component: AdminGallaryComponent },
       { path: 'send-solution', component: SendSolutionComponent },
       { path: 'user-contact', component: UserContactComponent },
+      { path: 'download', component: DownloadComponent },
+      { path: 'postReport', component: PostReportComponent },
     ])
   ],
   providers: [],

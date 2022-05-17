@@ -16,7 +16,8 @@ const serverUrl = environment.baseUrl;
 export class LoginComponent implements OnInit {
   formGroup: FormGroup;
   // constructor(private toastr: ToastrService, private router: Router, private activatedRoute: ActivatedRoute, private fb: FormBuilder) { }
-  constructor() { }
+  constructor(private toastr: ToastrService) { }
+
   ngOnInit(): void {
     this.formGroup = new FormGroup({
       email: new FormControl('', [Validators.required]),
@@ -46,7 +47,6 @@ export class LoginComponent implements OnInit {
       console.log("CurrentUser from Login",);
 
       if (response.data.data.match == true) {
-        // this.toastr.success(result.data.payload.userName, "Welcome");
         console.log('welcome');
         if (
           response.data.data.payload.role == "guest" ||
@@ -54,10 +54,15 @@ export class LoginComponent implements OnInit {
         ) {
           // console.log(response.data.data.payload.role);
           console.log('redirecting to home:');
+          // this.toastr.success(response.data.payload.userName, "Welcome");
+          this.toastr.success('Logged In Successfully', "Welcome");
           window.location.href = window.location.origin + '/home';
         } else {
           window.location.href = window.location.origin + '/admin-dashboard';
         }
+      }
+      else {
+        this.toastr.error('Please try again', 'Something went wrong');
       }
       // }
       // if (response.data) {

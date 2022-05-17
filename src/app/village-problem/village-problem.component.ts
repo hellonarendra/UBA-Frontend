@@ -19,7 +19,8 @@ export class VillageProblemComponent implements OnInit {
   showIdea;
   doneName = [];
   finalData;
-  constructor() { }
+
+  constructor(private toastr: ToastrService) { }
 
   dtOptions: any = {};
   ngOnInit(): void {
@@ -54,12 +55,29 @@ export class VillageProblemComponent implements OnInit {
     this.finalData = payload;
     axios.post(serverUrl + 'chat/updateStatus', this.finalData).then((response) => {
       console.log(response);
-    })
+      if (response) {
+        this.toastr.success('Marked as Done, Successfully', 'Congratulations');
+      }
+      else {
+        this.toastr.error('Please try again', 'Something went wrong');
+      }
+    }).catch((error) => {
+      console.log(error);
+    });
   }
+
   sendProblem() {
     axios.post(serverUrl + 'chat/add', this.formGroup.value).then((response) => {
       console.log(response);
-    })
+      if (response) {
+        this.toastr.success('Data Send Successfully', 'Congratulations');
+      }
+      else {
+        this.toastr.error('Please try again', 'Something went wrong');
+      }
+    }).catch((error) => {
+      console.log(error);
+    });
 
   }
 

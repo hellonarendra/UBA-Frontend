@@ -1,6 +1,8 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { BehaviorSubject, Observable } from "rxjs";
+import { ToastrService } from 'ngx-toastr';
 import axios from 'axios';
 import { environment } from 'src/environments/environment';
 const serverUrl = environment.baseUrl;
@@ -17,8 +19,10 @@ export class EventsComponent implements OnInit {
   getData;
   deleteName = [];
   finalData = {};
+  // images: string[] = [];
+  files;
 
-  constructor() { }
+  constructor(private toastr: ToastrService) { }
 
   dtOptions: any = {};
   ngOnInit(): void {
@@ -31,38 +35,52 @@ export class EventsComponent implements OnInit {
     axios.get(serverUrl + 'gallery/getAll').then((response) => {
       this.getData = response.data.data;
       console.log("this is getAll api:");
-
       console.log(response);
     })
+
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 10,
       processing: true,
       lengthMenu: [5, 10, 25],
       dom: 'Bfrtip',
-
     };
   }
 
   onFileChange(event) {
-    this.selectedFile = event.target.files[0];
+    this.files = event.target.files;
+    // if (event.target.files && event.target.files[0]) {
+    //   for (var i = 0; i < File.length; i++) {
+    //     var reader = new FileReader()
+    //     reader.readAsDataURL(event.target.files[i])
+    //     reader.onload = (event: any) => {
+    //       this.images.push(event.target.result);
+    //     }
+    //   }
+    // }
   }
   sendEventData() {
+    // console.log(this.images);
     let eventData = new FormData();
-    eventData.append('uploader', this.selectedFile, this.selectedFile.name);
     eventData.append('eventName', this.eventForm.get('eventName').value)
     eventData.append('eventDate', this.eventForm.get('eventDate').value)
+    for (var i = 0; i < this.files.length; i++) {
+      eventData.append('uploader', this.files[i]);
+    }
+    // for (let file of this.images) {
+    //   eventData.append('uploader', file);
+    // }
 
     axios.post(serverUrl + `gallery/add`, eventData).then((response) => {
       console.log('gallery Add API is Called:');
       console.log(response);
       if (response) {
+        // alert('Uploaded Successfully.');
         this.eventForm.reset();
-        //   this.toastr.success('Congratulations', 'Successfully signed up');
-        //   // this.router.navigate(['/home'], { relativeTo: this.activatedRoute })
-        // }
-        // else {
-        //   this.toastr.error('Please try again', 'Something went wrong');
+        this.toastr.success('Data Uploaded Successfully', 'Congratulations');
+      }
+      else {
+        this.toastr.error('Please try again', 'Something went wrong');
       }
     }).catch((error) => {
       console.log(error);
@@ -87,6 +105,13 @@ export class EventsComponent implements OnInit {
     axios.post(serverUrl + 'gallery/delete', this.finalData).then((response) => {
       console.log(response);
       console.log("Delete Api successfully executed");
+      if (response) {
+        this.eventForm.reset();
+        this.toastr.success('Deleted Successfully', 'Congratulations');
+      }
+      else {
+        this.toastr.error('Please try again', 'Something went wrong');
+      }
     }).catch((error) => {
       console.log(error);
     });

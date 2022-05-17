@@ -27,8 +27,8 @@ export class SignupComponent implements OnInit {
   // private router: Router,
   // private activatedRoute: ActivatedRoute,
   // private cd: ChangeDetectorRef
-  constructor(
-  ) { }
+
+  constructor(private toastr: ToastrService) { }
 
   ngOnInit(): void {
     if (this.ubaMembers) {
@@ -74,11 +74,11 @@ export class SignupComponent implements OnInit {
       console.log(response);
       if (response) {
         this.formGroup.reset();
-        //   this.toastr.success('Congratulations', 'Successfully signed up');
-        //   // this.router.navigate(['/home'], { relativeTo: this.activatedRoute })
-        // }
-        // else {
-        //   this.toastr.error('Please try again', 'Something went wrong');
+        this.toastr.success('Congratulations', 'Signed Up Successfully');
+        // this.router.navigate(['/home'], { relativeTo: this.activatedRoute })
+      }
+      else {
+        this.toastr.error('Please try again', 'Something went wrong');
       }
     }).catch((error) => {
       console.log(error);

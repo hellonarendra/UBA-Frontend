@@ -6,22 +6,24 @@
         <label for="eventName" class="label-text form-label mb-0 mt-2">
           Event Name </label>
         <input type="text" class="form-control rounded my-2" placeholder="Event Name" formControlName="eventName"
-          id=" eventName" />
+          id=" eventName" required />
       </div>
       <div class="col-md-6">
         <label for="date" class="label-text form-label mb-0 mt-2">
           Event Date</label>
-        <input type="date" class="form-control rounded my-2" placeholder="date" formControlName="eventDate"
-          id=" date" />
+        <input type="date" class="form-control rounded my-2" placeholder="date" formControlName="eventDate" id=" date"
+          required />
       </div>
       <div class="col-md-12">
         <label for="photo" class="label-text form-label">Event Photos</label>
         <input type="file" class="form-control rounded my-2" placeholder="Photos" formControlName="uploader" id=" photo"
-          enctype="multipart/form-data" (change)="onFileChange($event)" #fileInput />
+          enctype="multipart/form-data" (change)="onFileChange($event)" #fileInput multiple required />
+        <!-- <input type="file" class="form-control rounded my-2" placeholder="Photos" formControlName="uploader" id=" photo"
+          enctype="multipart/form-data" (change)="onFileChange($event,i)" #fileInput multiple /> -->
       </div>
     </div>
-    <div class="pl-auto">
-      <button class="btn btn-primary form-control form-control-sm btn-sm mt-3  " type=" submit">
+    <div class="pl-auto text-right">
+      <button class="btn btn-primary  btn-sm mt-3  " type=" submit">
         Submit
       </button>
     </div>

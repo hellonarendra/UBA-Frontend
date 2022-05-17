@@ -1,32 +1,35 @@
-<div class="bg-color">
-  <div class="container">
-    <h3>Problem Statements</h3>
-    <div class="row">
-      <div class="col">
-        <!-- (ngSubmit)="sendSolution()" -->
-        <!-- [formGroup]="solutionForm" -->
-        <form class="form-group rounded shadow p-3" *ngFor="let data of getData" ngNativeValidate>
-          <div class="row">
-            <ng-container *ngIf="(data.status)=='pending' ">
-              <div class="col-md-8">
-                <label for="eventName" class="label-text form-label mb-0 mt-2">
-                  <h6>Problem Statement:</h6>
-                  {{data.villageProblem}}
-                </label>
-                <textarea class="form-control form-control-sm rounded" rows="2" cols="50"
-                  placeholder="Enter Your Solution" (change)="formValue($event,data._id)" required></textarea>
-                <!-- formControlName="idea" -->
-              </div>
-              <div class="col-md-4">
-                <button class="btn btn-primary " (click)="sendId(data._id)" style="margin-top: 4rem;">
-                  Submit
-                </button>
-              </div>
-            </ng-container>
+<!-- <div class="bg-color"> -->
+<div class="container  mt-2">
+  <h3>Problem Statements</h3>
+  <!-- <div class="row"> -->
+  <!-- <div class="col"> -->
+  <!-- (ngSubmit)="sendSolution()" -->
+  <!-- [formGroup]="solutionForm" -->
+  <form class="form-group rounded shadow p-3" ngNativeValidate>
+    <div *ngFor="let data of getData">
+      <div class="row">
+        <ng-container *ngIf="(data.status)=='pending' ">
+          <div class="col-md-8">
+            <label for="eventName" class="label-text form-label mb-0 mt-2">
+              <h6>Problem Statement:</h6>
+              {{data.villageProblem}}
+            </label>
+            <textarea class="form-control form-control-sm rounded" rows="2" cols="50" placeholder="Enter Your Solution"
+              (change)="formValue($event,data._id)"></textarea>
+            <!-- formControlName="idea" -->
           </div>
-        </form>
+          <div class="col-md-4">
+            <button class="btn btn-primary " (click)="sendId(data._id)" style="margin-top: 4rem;">
+              Submit
+            </button>
+          </div>
+        </ng-container>
       </div>
     </div>
+  </form>
+  <!-- </div> -->
+  <!-- </div> -->
+  <!-- </div> -->
 
-  </div>
 </div>
+<!-- </div> -->

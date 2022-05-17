@@ -1,0 +1,24 @@
+<div class="container mt-3 mb-3">
+  <h3 class="bg-dark text-white p-3 mt-5 text-center">Post-Report</h3>
+  <form class="form-group rounded shadow p-3" [formGroup]="reportForm" (ngSubmit)="sendReportData()" ngNativeValidate>
+    <div class="row">
+      <div class="col-md-6">
+        <label for="eventName" class="label-text form-label mb-0 mt-2">
+          Report Name </label>
+        <input type="text" class="form-control rounded my-2" placeholder="Event Name" formControlName="reportName"
+          id=" reportName" required />
+      </div>
+      <div class="col-md-12">
+        <label for="photo" class="label-text form-label">Post Report As PDF</label>
+        <input type="file" class="form-control rounded my-2" placeholder="PDF" formControlName="uploader" id=" photo"
+          enctype="multipart/form-data" (change)="onFileChange($event)" accept=".pdf" #fileInput required />
+      </div>
+    </div>
+    <div class="pl-auto">
+      <button class="btn btn-primary form-control form-control-sm btn-sm mt-3  " type=" submit">
+        Submit
+      </button>
+    </div>
+  </form>
+
+</div>

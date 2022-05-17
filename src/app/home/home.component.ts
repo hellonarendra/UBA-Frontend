@@ -18,27 +18,27 @@ export class HomeComponent implements OnInit {
     {
       image: '../../assets/juit1.jpg',
       thumbImage: '../../assets/juit1.jpg',
-      title: 'Image title',
+      // title: 'Image title',
       alt: 'JUIT 1 image',
       // order: 1
     },
     {
       image: '../../assets/IMG_7437.JPG',
       thumbImage: '../../assets/IMG_7437.JPG',
-      title: 'Group Photo',
+      // title: 'Group Photo',
       alt: 'Group Photo',
     },
     {
       image: '../../assets/juit.jpg',
       thumbImage: '../../assets/juit.jpg',
-      title: 'Image title',
+      // title: 'Image title',
       alt: 'JUIT image',
     },
 
     {
       image: '../../assets/juit2.jpg',
       thumbImage: '../../assets/juit2.jpg',
-      alt: 'JUIT 2 image',
+      // alt: 'JUIT 2 image',
       title: 'title of image'
     }
   ];
