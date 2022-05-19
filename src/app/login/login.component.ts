@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
   //   );
   // }
   loginProcess() {
-    // console.log('Hello user is logging in');
+    console.log('Hello user is logging in');
     axios.post(serverUrl + 'user/login', this.formGroup.value).then((response) => {
       console.log("login API is being called:");
       console.log(response);

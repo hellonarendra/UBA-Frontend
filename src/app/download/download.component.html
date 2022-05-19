@@ -1,7 +1,8 @@
 <!-- <pdf-viewer [src]="doc" [render-text]="true" style="display: block;">
 </pdf-viewer> -->
 <div class="container p-5">
-  <table class="table border ">
+  <!-- <h3 class="bg-dark text-white p-2 mt-5 text-center">UBA Members</h3> -->
+  <table datatable [dtOptions]="dtOptions" class="table table-bordered text-center table-hover mt-5 ">
     <thead class="thead-dark">
       <tr>
         <th class="pl-5">Document Name</th>

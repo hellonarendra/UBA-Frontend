@@ -1,4 +1,6 @@
 <div class="container mt-3 mb-3">
+
+
   <h3 class="bg-dark text-white p-3 mt-5 text-center">Post-Report</h3>
   <form class="form-group rounded shadow p-3" [formGroup]="reportForm" (ngSubmit)="sendReportData()" ngNativeValidate>
     <div class="row">
@@ -21,4 +23,46 @@
     </div>
   </form>
 
+
+  <!-- <table class="table border "> -->
+  <h3 class="bg-dark text-white p-3 mt-5 mb-3 text-center">Report List</h3>
+  <table datatable [dtOptions]="dtOptions" class="table table-bordered text-center table-hover mt-5 ">
+    <thead class="thead-dark">
+      <tr>
+        <th class="pl-5">Document Name</th>
+        <th>View</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- <tr *ngFor="let data of pdf"> -->
+      <tr *ngFor="let data of getData">
+        <td class="capitalize pl-5">{{data.reportName}}</td>
+        <td> <a href="{{data.reportFile}}  " class="link " target="_blank"><i class="fa fa-eye icon"
+              aria-hidden="true"></i></a>
+        </td>
+        <td>
+          <i class="fas fa-trash " data-toggle="modal" data-target="#delete"
+            style="color:red; font-size: 17px;cursor: pointer;" (click)="deleteId(data._id)"></i>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+</div>
+
+<!-- //////////// Delete Model ///////////// -->
+
+<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <p>Are you sure you want to delete</p>
+        <!-- (click)="delete()" -->
+        <button class="btn btn-danger" type="button" data-dismiss="modal" (click)="delete()">Yes</button>
+        <button class="btn btn-success ml-2" data-dismiss="modal">No</button>
+      </div>
+    </div>
+  </div>
 </div>

@@ -19,6 +19,8 @@ export class VillageProblemComponent implements OnInit {
   showIdea;
   doneName = [];
   finalData;
+  deleteRowId;
+  deleteData;
 
   constructor(private toastr: ToastrService) { }
 
@@ -71,6 +73,7 @@ export class VillageProblemComponent implements OnInit {
       console.log(response);
       if (response) {
         this.toastr.success('Data Send Successfully', 'Congratulations');
+        this.formGroup.reset();
       }
       else {
         this.toastr.error('Please try again', 'Something went wrong');
@@ -78,7 +81,36 @@ export class VillageProblemComponent implements OnInit {
     }).catch((error) => {
       console.log(error);
     });
+  }
 
+  delete() {
+    console.log("delete function is called ");
+    console.log('finaldata', this.deleteData);
+    // axios.post(serverUrl + 'gallery/delete', this.deleteRowId).then((response) => {
+    axios.post(serverUrl + 'reports/deleteReport', this.deleteData).then((response) => {
+      console.log(response);
+      console.log("Delete Api successfully executed");
+      if (response) {
+        // this.eventForm.reset();
+        this.toastr.success('Deleted Successfully');
+      }
+      else {
+        this.toastr.error('Please try again', 'Something went wrong');
+      }
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
+
+
+  deleteId(deleteId) {
+    this.deleteRowId = deleteId;
+    console.log("this is delete ID:", this.deleteRowId);
+    const payload = {
+      id: deleteId,
+    }
+    // this.deleteName.push(payload);
+    this.deleteData = payload;
   }
 
 }

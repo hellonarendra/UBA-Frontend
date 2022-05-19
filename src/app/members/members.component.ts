@@ -23,18 +23,10 @@ export class MembersComponent implements OnInit {
     // console.log(this.jsonData);
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 10,
+      pageLength: 3,
       processing: true,
       lengthMenu: [5, 10, 25],
       dom: 'Bfrtip',
-      // buttons: [
-      //   'copy', 'csv', 'excel', 'print', 'pdf',
-      //   //  {
-      //   //     extend: 'pdfHtml5',
-      //   //     messageTop: 'PDF created by PDFMake with Buttons for DataTables.'
-      //   // }
-      //   // 'copyHtml5','excelHtml5','csvHtml5','pdfHtml5'
-      // ]
     };
   }
 
