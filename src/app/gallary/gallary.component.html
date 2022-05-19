@@ -7,8 +7,8 @@
 <div class="container-fluid">
   <div class="conatiner">
     <ng-container *ngIf="mainImg " class="m-0">
-      <div class="mainDiv rounded mb-3 ">
-        <div class="row  justify-content-start ">
+      <div class="mt-3 mainDiv rounded mb-3 ">
+        <div class="row justify-content-start">
           <div class="col-3 " *ngFor="let data of getData; let i=index">
             <div class="card cardDiv p-2 m-3 shadow">
               <a (click)="showImg(data.eventPhoto)">
