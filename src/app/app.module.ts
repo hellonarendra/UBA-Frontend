@@ -33,6 +33,7 @@ import { SendSolutionComponent } from './send-solution/send-solution.component';
 import { UserContactComponent } from './user-contact/user-contact.component';
 import { DownloadComponent } from './download/download.component';
 import { PostReportComponent } from './post-report/post-report.component';
+import { CoordinatorsComponent } from './coordinators/coordinators.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { PostReportComponent } from './post-report/post-report.component';
     UserContactComponent,
     DownloadComponent,
     PostReportComponent,
+    CoordinatorsComponent,
   ],
   imports: [
     BrowserModule,
@@ -93,6 +95,7 @@ import { PostReportComponent } from './post-report/post-report.component';
       { path: 'user-contact', component: UserContactComponent },
       { path: 'download', component: DownloadComponent },
       { path: 'postReport', component: PostReportComponent },
+      { path: 'coordinators', component: CoordinatorsComponent },
     ])
   ],
   providers: [],

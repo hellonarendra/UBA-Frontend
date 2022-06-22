@@ -27,11 +27,11 @@
 
   <ng-container *ngIf="viewImg">
     <div class="text-left">
-      <button class=" m-3 ml-0 btn btn-primary" (click)="backButton()">Click Here To Go Back</button>
+      <button class=" m-2 ml-0 btn btn-primary" (click)="backButton()">Click Here To Go Back</button>
     </div>
     <div class="row justify-content-start">
       <div class="col-3 " *ngFor="let data of showImage; let i=index">
-        <div class=" img-group card p-2 m-3 shadow rounded">
+        <div class=" img-group card p-2 m-2 shadow rounded">
           <img src={{data}} alt="All event Photo" class="card-img-top  allPhoto" alt="..." height="250em"
             width="250rem">
         </div>

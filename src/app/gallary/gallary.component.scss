@@ -47,7 +47,7 @@
 
 .allPhoto:hover {
   /* Start the vibrate animation with duration 0.5 seconds */
-  animation: vibrate 0.5s;
+  // animation: vibrate 0.5s;
   /* When the animation is finished, start again */
   animation-iteration-count: 0.5;
   -webkit-filter: grayscale(0%);

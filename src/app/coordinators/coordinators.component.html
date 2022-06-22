@@ -1,0 +1,44 @@
+<div class="container">
+  <h3 class="bg-dark text-white p-2 mt-5 text-center">Ours previos Co-ordinators</h3>
+  <div *ngFor="let item of cordi" class="border shadow">
+    <h3 class="bg-secondary text-white p-2  text-center">{{item.year}}</h3>
+    <div class="row">
+      <div class="col border-right ">
+        <div class="row custom-border p-3 ">
+          <img class="rounded-circle pl-2 " src={{item.mPhoto}} alt="" width="200px" height="200px">
+          <span class="mt-auto mb-auto pl-3 text-left">
+            <h4>{{item.mName}}</h4>
+          </span>
+        </div>
+      </div>
+      <div class="col ">
+        <div class="row custom-border p-3 ">
+          <img class="rounded-circle" src={{item.fPhoto}} alt="" width="200px" height="200px">
+          <span class="mt-auto mb-auto pl-3 text-left">
+            <h4>{{item.fName}}</h4>
+          </span>
+        </div>
+      </div>
+    </div>
+    <ng-container *ngIf="item.id == '4'">
+      <div class="row ">
+        <div class="col border-right ">
+          <div class="row custom-border p-3 ">
+            <img class="rounded-circle p-2" src={{item.photo1}} alt="" width="200px" height="200px">
+            <span class="mt-auto mb-auto pl-3 text-left">
+              <h4>{{item.name1}}</h4>
+            </span>
+          </div>
+        </div>
+        <div class="col ">
+          <div class="row custom-border p-3 ">
+            <img class="rounded-circle" src={{item.photo2}} alt="" width="200px" height="200px">
+            <span class="mt-auto mb-auto pl-3 text-left">
+              <h4>{{item.name2}}</h4>
+            </span>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
